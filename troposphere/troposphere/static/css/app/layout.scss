@@ -1,0 +1,398 @@
+#main {
+  padding-top: 52px;
+  padding-bottom: 80px;
+
+  @media (min-width:768px) and (max-width:1200px) {
+    padding-top:103px;
+  }
+}
+
+/* Extra small devices (phones, 767px and below) */
+@media (max-width: 767px) {
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+
+// Secondary Navigation
+.secondary-nav {
+  background: white;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 20px;
+
+  ul {
+    padding-left: 0px;
+    margin-bottom: 0px;
+  }
+
+  > .container > ul > li {
+    list-style: none;
+    margin-right: 60px;
+
+    > a {
+      text-decoration: none;
+      border-bottom: 5px solid transparent;
+      text-transform: uppercase;
+      padding: 18px 4px 18px 0px;
+      display: block;
+      font-size: 14px;
+      color: #333;
+
+      i {
+        font-size: 17px;
+        margin-right: 6px;
+      }
+    }
+
+    // used until react-router conversion is complete
+    &.active a {
+//      border-color: $brand-primary;
+    }
+
+    // used for react-router links
+    a.active {
+  //    border-color: $brand-primary;
+    }
+  }
+
+  .secondary-nav-links {
+    li {
+      float: left;
+    }
+  }
+
+  .options-bar {
+
+    > ul > li {
+      margin-right: 15px;
+    }
+
+    .caret {
+       @extend .caret;
+       height: 10px;
+       border-top: 6px solid;
+    }
+
+    .dropdown-menu a {
+
+      i {
+        margin-right: 6px;
+      }
+
+      &.danger {
+        color: #d44950;
+
+        &:hover {
+          color: white;
+          background: linear-gradient(180deg, rgba(244, 125, 92, 1) 0%, rgba(244, 125, 92, 1) 0.08%, rgba(242, 99, 75, 1) 23.78%, rgba(240, 80, 63, 1) 48%, rgba(239, 69, 56, 1) 73.05%, rgba(239, 65, 54, 1) 100%);
+        }
+      }
+    }
+  }
+
+
+  .project-name {
+    input {
+      border: 0;
+      padding: 0;
+      border-bottom: 1px dashed #CCC;
+      font-size: 25px;
+      margin-bottom: 7px;
+      margin-top: 25px;
+      outline: 0;
+      background-color: transparent;
+    }
+  }
+}
+
+.editable {
+  i {
+    font-size: 18px;
+    color: #999;
+    margin-left: 9px;
+    display: none;
+  }
+
+  &:hover i {
+    display: inline-block;
+  }
+
+  input {
+    width: 50%;
+  }
+}
+
+.resource-name {
+  input {
+    border: 0;
+    padding: 0;
+    border-bottom: 1px dashed #CCC;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    outline: 0;
+    font-size: 18px;
+    background-color: transparent;
+  }
+}
+
+.editable h1 {
+  @extend .editable;
+}
+
+.editable h4 {
+  @extend .editable;
+  i {
+    font-size: 14px;
+  }
+}
+
+.sub-menu {
+  button {
+    padding: 6px 20px;
+    text-transform: uppercase;
+    width: 86px;
+  }
+
+  // Project resource creation dropdown menu
+  .dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 5px;
+
+    li {
+      border-left: 4px solid transparent;
+
+      &:hover {
+        background-color: #f5f5f5;
+        border-left: 4px solid #848484;
+      }
+
+      a {
+        border-left: none;
+        color: #333;
+
+        i {
+          margin-right: 10px;
+          font-size: 16px;
+          line-height: 22px;
+          vertical-align: middle;
+        }
+
+        span {
+          font-size: 16px;
+          line-height: 15px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  ul {
+    padding-left: 0;
+    padding-top: 15px;
+  }
+
+  li {
+    list-style: none;
+
+    a {
+      padding-left: 10px;
+      border-left: 2px solid transparent;
+      color: #999;
+    }
+
+    &.active a {
+      //color: $brand-primary;
+      font-weight: 600;
+     //border-left: 2px solid $brand-primary;
+      padding-left: 9px;
+    }
+  }
+}
+
+.button-bar {
+  padding: 10px 0px;
+
+  button {
+    padding: 6px 26px;
+    border-radius: 2px;
+    margin-right: 7px;
+  }
+
+  .breadcrumb {
+    padding: inherit;
+    margin-bottom: inherit;
+    list-style: inherit;
+    background-color: inherit;
+    border-radius: inherit;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+// This is repeated above because the values are different here and the above are scoped within `.side-panel`
+.detail-label {
+    width: 15%;
+    display: block;
+    float:left;
+    @media(max-width: 700px) {
+        width: 100%;
+        float: none;
+    }
+}
+
+.detail-value {
+    width: 85%;
+    display: block;
+    float: left;
+    padding-left: 10px;
+    @media(max-width: 700px) {
+        width: 100%;
+        float: none;
+    }
+}
+
+.scrollable-content {
+
+  .header {
+    padding: 10px 0px;
+
+    i {
+      display: inline-block;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+  .title-3 {
+      display: inline-block;
+      vertical-align: bottom;
+      font-size: 18px;
+      margin-top: 0px;
+      margin-bottom: 3px;
+    }
+  }
+
+  div.resource-checkbox {
+    height: 13px;
+    width: 13px;
+    border: 1px solid #cccccc;
+    position: relative;
+
+    img {
+      position: absolute;
+      height: 13px;
+      top: -3px;
+      display: none;
+    }
+
+    &.checked {
+      img {
+        display: block;
+      }
+    }
+  }
+
+  // overide default bootstrap styling (specificity is to outweigh bootstrap)
+  .table > tbody > tr > td {
+    border: none;
+  }
+
+}
+
+.table tr {
+  &.selected {
+    //background-color: rgba(255,255,100,0.4);
+    //background-color: rgba(0, 123, 137, 0.2);
+    background-color: #eee;
+
+    &:hover td {
+      background-color: #eee;
+    }
+  }
+}
+
+// Table styles
+.td-sub-menu {
+  position: relative;
+  z-index: 2;
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+  @media(max-width:950px) {
+    float: none;
+    display: block;
+  }
+}
+
+.td-project-content {
+  width: 100%;
+
+  .resource-list {
+    position: relative;
+
+    .scrollable-content {
+      float: left;
+      width: 100%;
+    }
+
+    td a {
+      text-decoration: underline;
+    }
+
+    .image-preview img {
+      margin-right: 5px;
+      padding-bottom: 0px;
+      margin-top: -5px;
+    }
+  }
+}
+
+.not-real-resource-row {
+  color: #E00;
+}
+
+.message-banner-wrapper {
+  background-color: #F3F0B6;
+}
+
+ul.message-banner {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+
+  .message {
+    padding: 3px 0px;
+
+    .provider-name {
+      margin-right: 10px;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+
+  .td-project-content {
+    .resource-list {
+      .scrollable-content {
+        padding-right: 0px;
+      }
+    }
+  }
+}
