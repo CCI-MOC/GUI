@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% include 'comment.html' %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmosphere</title>
+
+    <!--CSS-->
+    <link rel="shortcut icon" href="{{ FAVICON }}"  />
+    <link href="{{ CSS_FILE }}" rel="stylesheet" type="text/css">
+
+    <!-- Adobe Typekit (for Myriad Pro) -->
+    <script type="text/javascript" src="//use.typekit.net/gty2jpo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <!--[if IE]>
+    <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="tk-myriad-pro splash-screen">
+
+    <div id="application"></div>
+    <div id="modal"></div>
+
+    {% if access_token %}
+    <script type="text/javascript">
+        var access_token = "{{ access_token }}";
+    </script>
+    {% endif %}
+
+    <!-- Application dependencies -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/tests/{{ test }}.js"></script>
+
+</body>
+</html>
