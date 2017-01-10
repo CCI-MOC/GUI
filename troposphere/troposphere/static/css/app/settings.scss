@@ -1,0 +1,46 @@
+.settings-view{
+
+  #icon-set-select {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      text-align: center;
+      display: inline-block;
+      margin-right: 10px;
+
+      &.selected a {
+        background-color: hsl(186, 100%, 33%);
+        color: #fff;
+      }
+
+      a {
+        display: block;
+        padding: 20px;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: hsl(0, 0%, 90%);
+        }
+      }
+    }
+  }
+
+  .t-title {
+    margin: 20px 0px 15px 0px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+  }
+
+  .notifications {
+    .t-title {
+      margin: 0px 0px 15px 0px;
+    }
+
+    input {
+      margin-right: 5px;
+    }
+  }
+
+}       

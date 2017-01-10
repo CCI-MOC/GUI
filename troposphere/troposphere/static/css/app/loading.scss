@@ -1,0 +1,52 @@
+/* http://www.designcouch.com/home/why/2013/05/23/dead-simple-pure-css-loading-spinner/ */
+.loading {
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+    position: relative;
+    animation: rotation .6s infinite linear;
+    border-left:6px solid rgba(0, 152, 170, .15);
+    border-right:6px solid rgba(0, 152, 170, .15);
+    border-bottom:6px solid rgba(0, 152, 170, .15);
+    border-top:6px solid rgba(0, 152, 170, .8);    
+    border-radius:100%;
+}
+
+.loading-small {
+  @extend .loading;
+  height: 30px;
+  width: 30px;
+}
+
+// created to show an instance is loading in the list view
+tr div.loading-tiny-inline {
+  @extend .loading;
+  height: 25px;
+  width: 25px;
+  margin: 0 !important;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+}
+
+// This has to be this specific to override the default Bootstrap styling
+.table > tbody > tr.loading-row > td {
+  line-height: 32px;
+  span {
+    line-height: 32px;
+    vertical-align: text-bottom;
+    margin-left: 10px;
+  }
+}
+
+@keyframes rotation {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(359deg);}
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    #main .loading {
+        margin: 180px auto 0;
+    }
+}

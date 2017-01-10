@@ -1,0 +1,184 @@
+#project-list {
+  padding: 0;
+  list-style: none;
+}
+
+// Project Resource Modal
+#project-resource-modal {
+  hr {
+    margin-top: 10px;
+  }
+
+  .horizontal-list {
+    text-align: center;
+    margin: 0;
+    padding: 10px 0px 0px 0px;
+
+    .clickable-region {
+      width: 80px;
+      margin: auto;
+      cursor: pointer;
+
+      label {
+        cursor: pointer;
+      }
+    }
+
+    li {
+      display: inline-block;
+      width: 33%;
+
+      &.active {
+        color: #77AB41;
+      }
+
+      .icon-container {
+        //height: 40px;
+
+        i {
+          //-webkit-transform: scale(4);
+          font-size: 50px;
+        }
+      }
+
+      label {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.edit-details {
+  .buttons {
+    margin-left: 124px;
+    margin-top: 20px;
+  }
+
+  .cancel-button {
+    margin-right: 20px;
+  }
+}
+
+.project-info-segment {
+  margin-top: 22px;
+
+  textarea {
+    font-size: 16px;
+    width: 650px;
+    height: 215px;
+    margin-left: 15px;
+  }
+
+  input {
+    font-size: 16px;
+    width: 400px;
+    margin-left: 15px;
+  }
+
+  .t-body-2 {
+    color: #5A5A5A;
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 0;
+    margin-right: 25px;
+    margin-top: 0;
+  }
+}
+
+ul.project-resource-list {
+  font-size: 18px;
+  color: #231F20;
+  list-style-type: none;
+  padding: 0;
+
+  width: 100%;
+  border-top: 1px solid #ccc;
+  li {
+    display: inline-block;
+    margin-left: 29px;
+    i {
+      margin-right: 7px;
+    }
+    span {
+      font-size: 23px;
+    }
+  }
+}
+
+.project-property {
+  display: inline-block;
+
+  input {
+    border: 0;
+    padding: 0;
+    border-bottom: 1px dashed #CCC;
+    font-size: 16px;
+    margin-bottom: 9px;
+    outline: 0;
+    background-color: transparent;
+    width: 600px;
+  }
+
+  p {
+    max-width: 600px;
+  }
+
+  &.editable {
+    i {
+      font-size: 14px;
+      color: #999;
+      margin-left: 9px;
+      display: none;
+    }
+
+    &:hover i {
+      display: inline-block;
+    }
+
+    textarea {
+      max-width: 950px;
+      //min-height: 150px;
+      height: 150px;
+      width: 600px;
+      font-size: 16px;
+    }
+  }
+
+  .html-wrapper {
+    display: inline-block;
+    p {
+      display: block;
+    }
+  }
+}
+
+.refreshing {
+  -webkit-animation: rotation 1s infinite linear;
+  -moz-animation: rotation 1s infinite linear;
+  -o-animation: rotation 1s infinite linear;
+  animation: rotation 1s infinite linear;
+}
+
+
+//Creating a 'small' project-list display
+ul.small-project-resource-list {
+  bottom: 0px;
+  font-size: 18px;
+  color: #231F20;
+  list-style-type: none;
+  padding: 0;
+
+  width: 100%;
+  border-top: 1px solid #ccc;
+  margin-left: -15px;
+  li {
+    display: inline-block;
+    margin-left: 29px;
+    i {
+      margin-right: 7px;
+    }
+    span {
+      font-size: 23px;
+    }
+  }
+}
