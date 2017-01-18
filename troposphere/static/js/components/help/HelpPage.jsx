@@ -2,62 +2,7 @@ import React from "react";
 import stores from "stores";
 import globals from "globals";
 
-export default React.createClass({
-    displayName: "MarketplaceCorePage",
-    
-    render: function() {
-    
-    let imgs = ["https://info.massopencloud.org/wp-content/uploads/2016/03/bu-e1460748238801.jpg", "https://info.massopencloud.org/wp-content/uploads/2016/03/harvard.jpg", "https://info.massopencloud.org/wp-content/uploads/2016/03/mit.jpg", "https://info.massopencloud.org/wp-content/uploads/2016/03/northeastern.jpg"];
 
-    return (
-        <div style={{ paddingTop: "50px" }} className="container">
-            <h1 className="t-display-1">Marketplace</h1>
-            <h2 className="t-title">Services</h2>
-            <table style={{width: 752}}>
-	    <tbody>
-                <tr>
-		<td style={{width: 163.875}}><img src="https://info.massopencloud.org/wp-content/uploads/2016/01/imgres.png" style = {{float: "left", width: 150, height: 100}} /></td>
-		<td style={{width: 573.125}}>Platform as a Service Platform as a Service Platform as a Service Platform as a Service Platform as a Service Platform as a Service Platform as a Service Platform as a Service</td>
-	        </tr>
-                <div></div>
-		<tr>
-		<td style={{width: 163.875}}><img src="https://info.massopencloud.org/wp-content/uploads/2016/01/sahara-logo-1.png" style = {{float: "left", width: 150, height: 100}} /></td>
-		<td style={{width: 573.125}}>Big Data as a Service Big Data as a Service Big Data as a Service Big Data as a Service Big Data as a Service Big Data as a Service Big Data as a Service Big Data as a Service</td>
-		</tr>
-		<tr>
-		<td style={{width: 163.875}}><img src="https://info.massopencloud.org/wp-content/uploads/2016/01/Big-Data-Analytics-Word-Cloud-660x384.jpg" style = {{float: "left", width: 150, height: 100}} /></td>
-		<td style={{width: 573.125}}>Cloud Data Analytics Cloud Data Analytics Cloud Data Analytics Cloud Data Analytics Cloud Data Analytics Cloud Data Analytics Cloud Data Analytics Cloud Data Analytics Cloud Data Analytics</td>
-		</tr>
-                <tr>
-                <td style={{width: 163.875}}><img src="https://info.massopencloud.org/wp-content/uploads/2016/09/large-logo-moc.jpg" style = {{float: "left", width: 150, height:100}} /></td>
-                <td style={{width: 573.125}}>Hardware Isolated Layer Hardware Isolated Layer Hardware Isolated Layer Hardware Isolated Layer Hardware Isolated Layer Hardware Isolated Layer Hardware Isolated Layer Hardware Isolated Layer</td>
-                </tr>
-                <tr>
-                <td style={{width: 163.875}}><img src="https://info.massopencloud.org/wp-content/uploads/2016/09/large-logo-moc.jpg" style = {{float: "left", width: 150, height:100}} /></td>
-                <td style={{width: 573.125}}>Cloud Resource Federation (K2K) Cloud Resource Federation (K2K) Cloud Resource Federation (K2K) Cloud Resource Federation (K2K) Cloud Resource Federation (K2K) Cloud Resource Federation (K2K) Cloud Resource Federation (K2K)</td>
-                </tr>
-             </tbody>
-             </table>
-        </div>
-        )
-    }
-});
-/*    
-    return (
-        <ul>
-            {imgs.map(function(img){
-                return <span>
-                       <li><p><img src={img} style={{float: "left", width: 100, height: 50}} />Description goes here about these 5 services we have</p></li>
-                       <br />
-                       </span>;
-            })}
-        </ul>
-        );
-    }
-});
-*/
-
-/*
 let resources = [{
     title: "User Manual",
     link_key: "default",
@@ -126,5 +71,3 @@ export default React.createClass({
         );
     }
 });
-*/
-
