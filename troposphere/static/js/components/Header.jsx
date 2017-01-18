@@ -156,6 +156,30 @@ let LogoutLink = React.createClass({
     }
 });
 
+let ProjectList = React.createClass({
+
+    propTypes: {
+        project_list: React.PropTypes.array.isRequired
+    },
+    
+    render: function() {
+        let Project = "Project";
+        let project_list = this.props.project_list;
+    
+    return (
+        <li className="dropdown">
+            <a className="dropdown-toggle" href="#" data-toggle="dropdown">
+                {Project} <b className="caret"></b></a>
+            <ul className="dropdown-menu">
+                {project_list.map(function(project){
+                    return <li key={project.toString()}>{project}</li>;
+                })}
+            </ul>
+        </li>
+        );
+    }
+});
+
 let Header = React.createClass({
     displayName: "Header",
 
@@ -257,7 +281,15 @@ let Header = React.createClass({
         let brandLink = loggedIn
             ? <Link to="dashboard" className="navbar-brand" />
             : <Link to="images" className="navbar-brand" />;
-
+        
+        var project_array = []
+        if (window.project_list) {
+            project_array = window.project_list.split(',');
+        }
+        let projectListDropdown = loggedIn
+            ? <ProjectList project_list={project_array}/>
+            : null;
+        
         return (
         <div className="navbar navbar-default navbar-fixed-top" role="navigation">
             <MaintenanceMessageBanner maintenanceMessages={this.props.maintenanceMessages} />
@@ -279,6 +311,7 @@ let Header = React.createClass({
                         {this.renderNavLinks()}
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
+                        {projectListDropdown}
                         {loginLogoutDropdown}
                     </ul>
                 </div>
