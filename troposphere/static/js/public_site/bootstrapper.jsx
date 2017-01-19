@@ -9,7 +9,6 @@ import browserBondo from "utilities/browserBondo";
 import modals from "modals";
 
 modals.PublicModals = require("modals/PublicModals");
-//modals.LoginModals = require("modals/LoginModals");
 
 // Apply polyfills for older browser (intent: temporary use)
 browserBondo.conditionalFill();
@@ -17,14 +16,15 @@ browserBondo.conditionalFill();
 // Register which stores the application should use
 import stores from "stores";
 
+stores.ProviderStore = require("stores/ProviderStore");
 stores.ImageStore = require("stores/ImageStore");
 stores.ImageBookmarkStore = require("stores/ImageBookmarkStore");
 stores.ImageVersionStore = require("stores/ImageVersionStore");
 stores.TagStore = require("stores/TagStore");
 stores.HelpLinkStore = require("stores/HelpLinkStore");
 
-//import actions from "actions";
-//actions.LoginActions = require("actions/LoginActions");
+import actions from "actions";
+actions.LoginActions = require("actions/LoginActions");
 
 // Mock out the profile store with an empty profile
 stores.ProfileStore = {
