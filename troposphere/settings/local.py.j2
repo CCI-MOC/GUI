@@ -70,6 +70,12 @@ DISABLE_PUBLIC_AUTH={{ DISABLE_PUBLIC_AUTH }}
 DISABLE_PUBLIC_AUTH= False
 {% endif %}
 
+{% if KEYSTONE_TOKEN_LOGIN is defined %}
+KEYSTONE_TOKEN_LOGIN={{ KEYSTONE_TOKEN_LOGIN }}
+{% else %}
+KEYSTONE_TOKEN_LOGIN= False
+{% endif %}
+
 # The location from where static files are aggregated
 # ./manage.py collectstatic moves files from STATICFILES_DIRS to STATIC_ROOT
 STATICFILES_DIRS = [
@@ -166,7 +172,10 @@ AUTHENTICATION_BACKENDS = (
     # LDAP - Allow access via LDAP username/password
     'django_cyverse_auth.authBackends.LDAPLoginBackend',
     {% endif -%}
-    )
+    {% if AUTH_ENABLE_OPENSTACK -%}
+    'django_cyverse_auth.authBackends.OpenstackLoginBackend',
+    {% endif -%}
+     )
 {% endif -%}
 #CAS
 CAS_SERVER = "{{ CAS_SERVER }}"
@@ -238,6 +247,9 @@ AUTHENTICATION = {
     #LDAP
     "LDAP_SERVER": '{{ LDAP_SERVER }}',
     "LDAP_SERVER_DN": '{{ LDAP_SERVER_DN }}',
+    #KEYSTONE -- Required for OpenStackLoginBackend
+    "KEYSTONE_SERVER": '{{ KEYSTONE_SERVER }}',
+    "KEYSTONE_DOMAIN_NAME": '{{ KEYSTONE_DOMAIN_NAME}}',
     #CAS
     "CAS_SERVER": '{{ CAS_SERVER }}',
     "CAS_AUTH_PREFIX": '{{ CAS_AUTH_PREFIX }}',
