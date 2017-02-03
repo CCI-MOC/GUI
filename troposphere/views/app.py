@@ -98,10 +98,10 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
     for backend in auth_backends:
         login_auth_type = None
         auth_provider = None
-        if backend in password_backends:
-            login_auth_type = "password-login"
-            auth_provider = "Atmosphere"
-        elif backend in openstack_backends:
+        #if backend in password_backends:
+        #    login_auth_type = "password-login"
+        #    auth_provider = "Atmosphere"
+        if backend in openstack_backends:
             login_auth_type = "openstack-login"
             auth_provider = "Openstack"
         elif backend == oauth_backends[0]:
