@@ -100,12 +100,11 @@ export default React.createClass({
     isSubmittable: function() {
         var hasUsername = !!this.state.username && this.state.username.length > 0;
         var hasPassword = !!this.state.password && this.state.password.length > 0;
-        var hasProjectName = !!this.state.projectName && this.state.projectName.length > 0;
         var canLogin = this.state.allowLogin == true;
         if(this.state.showNewProvider) {
             hasProjectName = true;
         }
-        return hasUsername && hasPassword && hasProjectName && canLogin;
+        return hasUsername && hasPassword && canLogin; 
     },
     onProviderChange: function(provider) {
         this.setState({provider:provider});
@@ -160,29 +159,6 @@ export default React.createClass({
                         onChange={this.onPasswordChange}
                         onKeyPress={this.onEnterPressed}
                         />
-                </div>
-                <div className={projectNameClasses}>
-                    <label htmlFor="projectName">
-                        projectName
-                    </label>
-                    <input required
-                        type="text"
-                        className="form-control"
-                        id="projectName"
-                        value={this.state.projectName}
-                        onChange={this.onProjectNameChange}
-                        onKeyPress={this.onEnterPressed}
-                        />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="provider">
-                        Provider
-                    </label>
-                    <SelectMenu id="provider"
-                                current={ provider }
-                                optionName={ p => p.get("name") }
-                                list={ providerList }
-                                onSelect={ this.onProviderChange } />
                 </div>
                 <div className="login-screen-footer modal-footer">
                     <span className="help-block">{errorMessage}</span>
