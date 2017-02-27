@@ -114,18 +114,10 @@ let LogoutLink = React.createClass({
     },
 
     render: function() {
-        let statusPageEl;
         let username = this.props.username;
 
         if (!username && window.show_public_site) {
             username = "AnonymousUser"
-        }
-        if (globals.STATUS_PAGE_LINK) {
-            statusPageEl = (
-                <li>
-                    <a href={globals.STATUS_PAGE_LINK} target="_blank">Status</a>
-                </li>
-            );
         }
 
         let trackSettings = () => {
@@ -157,7 +149,6 @@ let LogoutLink = React.createClass({
                 <li>
                     <a id="version_link" href="#" onClick={this.onShowVersion}>Version</a>
                 </li>
-                {statusPageEl}
                 <li>
                     <a id="logout_link" href="#" onClick={this.onLogout}>Sign out</a>
                 </li>
