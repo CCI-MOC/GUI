@@ -14,7 +14,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 BASE_URL = ""
 
-SERVER_URL="https://localhost"
+SERVER_URL = "https://localhost"
 
 DEBUG = False
 
@@ -142,7 +142,7 @@ LOGGING = {
     },
 }
 
-API_ROOT    = SERVER_URL + "/api/v1"
+API_ROOT = SERVER_URL + "/api/v1"
 API_V2_ROOT = SERVER_URL + "/api/v2"
 
 # The endpoint in troposphere for generated assets
