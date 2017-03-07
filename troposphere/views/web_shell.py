@@ -1,6 +1,8 @@
 import json
 import logging
 import time
+import hmac
+import hashlib
 
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
@@ -13,7 +15,6 @@ logger = logging.getLogger(__name__)
 
 
 def _create_signature(secret, *parts):
-    import hmac, hashlib
     hash = hmac.new(secret, digestmod=hashlib.sha1)
     for part in parts:
         hash.update(str(part))
