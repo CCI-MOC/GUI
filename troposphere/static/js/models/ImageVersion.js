@@ -12,5 +12,5 @@ export default Backbone.Model.extend({
         attributes.description = attributes.description || "";
 
         return attributes;
-    },
+    }
 });

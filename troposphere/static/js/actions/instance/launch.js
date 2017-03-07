@@ -53,7 +53,7 @@ function launch(params) {
         identity: {
             id: identity.id,
             uuid: identity.get("uuid")
-        },
+        }
     }, {
         parse: true
     });
@@ -78,7 +78,7 @@ function launch(params) {
         name: instanceName,
         size_alias: size.get("alias"),
         machine_alias: machine.uuid,
-        scripts: scripts,
+        scripts: scripts
     }
 
     if (globals.USE_ALLOCATION_SOURCES) {
