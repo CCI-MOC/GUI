@@ -14,17 +14,6 @@ export default React.createClass({
                 "padding-top": "50px"
             };
 
-        if (globals.STATUS_PAGE_LINK) {
-            // if the hyperlink is part of global metdata,
-            // then build out the markup element for including it
-            statusPageEl = (
-                <p>
-                    {"You can view more information about the current maintenance on the "}
-                    <a href={globals.STATUS_PAGE_LINK} target="_blank">status page</a>
-                </p>
-            );
-        }
-
         return (
         <div>
             <div style={imageParentStyle}>
