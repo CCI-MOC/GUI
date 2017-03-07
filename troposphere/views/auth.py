@@ -61,7 +61,7 @@ def _post_login(request):
     else:
         data = request.POST
 
-    auth_kwargs = {'username': data.get('username'), 'password': data.get('password'), 'request':request}
+    auth_kwargs = {'username': data.get('username'), 'password': data.get('password'), 'request': request}
     if 'token' in data:
         auth_kwargs['token'] = data['token']
     if 'auth_url' in data:
@@ -75,11 +75,11 @@ def _post_login(request):
     auth_login(request, user)
     issuer_backend = request.session.get('_auth_user_backend', '').split('.')[-1]
     user_profile = _get_user_profile(user)
-    new_token = create_user_and_token(user_profile, request.session.pop('token_key',None))
+    new_token = create_user_and_token(user_profile, request.session.pop('token_key', None))
     _apply_token_to_session(request, new_token.key)
     request.session['access_token'] = new_token.key
     request.session['username'] = user.username
-    to_json = json.dumps({"username":user.username, "token":new_token.key})
+    to_json = json.dumps({"username": user.username, "token": new_token.key})
     return HttpResponse(to_json, content_type="application/json")
 
 
@@ -100,7 +100,7 @@ def login(request):
         return _globus_login(request)
     elif 'django_cyverse_auth.authBackends.OAuthLoginBackend' in all_backends:
         return _oauth_login(request)
-    #Uh - Oh.
+    # Uh - Oh.
     return redirect('application')
 
 
@@ -117,7 +117,7 @@ def logout(request):
     request.session.flush()
     request.session.clear_expired()
 
-    #Look for 'cas' to be passed on logout.
+    # Look for 'cas' to be passed on logout.
     request_data = request.GET
     if request_data.get('force', False):
         if 'django_cyverse_auth.authBackends.CASLoginBackend' in all_backends\
@@ -135,7 +135,7 @@ def logout(request):
     return redirect('application')
 
 
-#Initiate the OAuth login (Authorize)
+# Initiate the OAuth login (Authorize)
 def _globus_login(request):
     """
     NOTE: we use 'next' not 'redirect' here
@@ -166,7 +166,7 @@ def _oauth_login(request):
 # CAS OAuth callback ( After the Authorize is OK)
 def cas_oauth_service(request):
     if 'code' not in request.GET:
-        #You should not be here, you should be at OAuth-wrapped CAS login.
+        # You should not be here, you should be at OAuth-wrapped CAS login.
         return redirect(cas_oauth_client.authorize_url())
 
     code_service_ticket = request.GET['code']
@@ -182,8 +182,8 @@ def cas_oauth_service(request):
         access_token = settings.CAS_DEV_TOKEN
 
     if not access_token:
-        #code_service_ticket has expired (They don't last very long...)
-        #Lets try again (Redirect to OAuth-wrapped CAS login)
+        # code_service_ticket has expired (They don't last very long...)
+        # Lets try again (Redirect to OAuth-wrapped CAS login)
         return redirect(cas_oauth_client.authorize_url())
 
     user = authenticate(access_token=access_token)

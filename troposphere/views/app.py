@@ -73,13 +73,13 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
             and 'auth_token' in request.COOKIES:
         request.session['access_token'] = request.COOKIES['auth_token']
 
-    #NOTE: Now that we've moved this section from .js to Django, sentry configuration _could_ become more dynamic:
+    # NOTE: Now that we've moved this section from .js to Django, sentry configuration _could_ become more dynamic:
     if settings.DEBUG:
         sentry_dict = None
     else:
         sentry_dict = {
             "dsn": "https://27643f06676048be96ad6df686c17da3@app.getsentry.com/73366",
-            "release":"0ec17fad757f44cbdda8ceace19139fd",
+            "release": "0ec17fad757f44cbdda8ceace19139fd",
         }
 
     auth_backends = settings.AUTHENTICATION_BACKENDS
@@ -98,7 +98,7 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
     for backend in auth_backends:
         login_auth_type = None
         auth_provider = None
-        #if backend in password_backends:
+        # if backend in password_backends:
         #    login_auth_type = "password-login"
         #    auth_provider = "Atmosphere"
         if backend in openstack_backends:

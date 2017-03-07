@@ -25,7 +25,7 @@ def web_shell(request):
     shell_user = request.user
     if request.session:
         logger.info("request.session: %s" % request.session.items())
-        atmo_username = request.session.get('username','')
+        atmo_username = request.session.get('username', '')
         atmo_user = TroposphereUser.objects.filter(username=atmo_username).first()
         if atmo_user:
             shell_user = atmo_user
