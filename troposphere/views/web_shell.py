@@ -45,7 +45,7 @@ def web_shell(request):
         }
 
         sig = _create_signature(secret, authobj['api_key'],
-                authobj['upn'], authobj['timestamp'])
+                                authobj['upn'], authobj['timestamp'])
 
         # GATE_ONE_API_AUTH_SETTINGS
         template_params = {
@@ -63,9 +63,9 @@ def web_shell(request):
             template_params['gate_one_location'] = request.GET['location']
 
         response = render_to_response(
-                'web_shell.html',
-                template_params,
-                context_instance=RequestContext(request)
+            'web_shell.html',
+            template_params,
+            context_instance=RequestContext(request)
         )
     else:
         logger.info("not authenticated: \nrequest:\n %s" % request)

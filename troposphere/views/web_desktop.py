@@ -49,8 +49,8 @@ def web_desktop(request):
                 request.META['HTTP_ACCEPT_LANGUAGE']]))
 
             sig = SIGNED_SERIALIZER.dumps([ip_address,
-                client_ip_fingerprint,
-                browser_fingerprint])
+                                           client_ip_fingerprint,
+                                           browser_fingerprint])
 
             url = '%s?token=%s&password=display' % (
                 settings.WEB_DESKTOP['redirect']['PROXY_URL'],
@@ -58,7 +58,7 @@ def web_desktop(request):
 
             response = HttpResponseRedirect(url)
             response.set_cookie('original_referer', request.META['HTTP_REFERER'],
-                domain=settings.WEB_DESKTOP['redirect']['COOKIE_DOMAIN'])
+                                domain=settings.WEB_DESKTOP['redirect']['COOKIE_DOMAIN'])
 
             logger.info("redirect response: %s" % (response))
 

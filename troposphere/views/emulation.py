@@ -41,7 +41,7 @@ def emulate(request, username):
     if hasattr(settings, "EMULATED_SESSION_COOKIE_AGE"):
         request.session.set_expiry(settings.EMULATED_SESSION_COOKIE_AGE)
         logger.info("[EMULATE]Session length set to: %s seconds"
-            % settings.EMULATED_SESSION_COOKIE_AGE)
+                    % settings.EMULATED_SESSION_COOKIE_AGE)
 
     r = requests.get(
         os.path.join(settings.API_SERVER, "api/v1/token_emulate/%s" % username),

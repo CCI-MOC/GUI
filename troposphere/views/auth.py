@@ -38,14 +38,14 @@ def _mock_login(request):
     if request.session.get('redirect_to'):
         logger.debug("Found `redirect_to` in session... ")
         logger.debug("Redirecting to: %s" %
-            (request.session.get('redirect_to'),))
+                     (request.session.get('redirect_to'),))
 
         redirect_url = request.session.pop('redirect_to')
         return redirect(redirect_url)
     elif 'redirect_to' in request.GET:
         logger.debug("Found `redirect_to` in GET params... ")
         logger.debug("Redirecting to: %s" %
-            (request.GET.get('redirect_to'),))
+                     (request.GET.get('redirect_to'),))
 
         redirect_url = request.GET.get('redirect_to')
         return redirect(redirect_url)
@@ -121,7 +121,7 @@ def logout(request):
     request_data = request.GET
     if request_data.get('force', False):
         if 'django_cyverse_auth.authBackends.CASLoginBackend' in all_backends\
-        or 'django_cyverse_auth.authBackends.OAuthLoginBackend' in all_backends:
+                or 'django_cyverse_auth.authBackends.OAuthLoginBackend' in all_backends:
             redirect_to = request_data.get("service")
             if not redirect_to:
                 redirect_to = settings.SERVER_URL + reverse('application')
@@ -129,7 +129,7 @@ def logout(request):
             logger.info("[CAS] Redirect user to: %s" % logout_url)
             return redirect(logout_url)
         elif 'django_cyverse_auth.authBackends.GlobusLoginBackend' in all_backends\
-          or 'django_cyverse_auth.authBackends.GlobusOAuthLoginBackend' in all_backends:
+                or 'django_cyverse_auth.authBackends.GlobusOAuthLoginBackend' in all_backends:
             logger.info("[Globus] Redirect user to logout")
             return globus_logout_redirect(request)
     return redirect('application')
@@ -211,10 +211,10 @@ def failure_response(status, message):
     status and message.
     """
     logger.info("status: %s message: %s" % (status, message))
-    json_obj = {"errors":
-            [{'code': status, 'message': message}]
-        }
+    json_obj = {
+        "errors": [{'code': status, 'message': message}]
+    }
     to_json = json.dumps(json_obj)
     return HttpResponse(to_json,
-                    status=status,
-                    content_type='application/json')
+                        status=status,
+                        content_type='application/json')
