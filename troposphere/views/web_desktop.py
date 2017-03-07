@@ -25,6 +25,7 @@ SIGNER = Signer(
 def _should_redirect():
     return settings.WEB_DESKTOP['redirect']['ENABLED']
 
+
 def web_desktop(request):
     """
     Signs a redirect to transparent proxy for web desktop view.

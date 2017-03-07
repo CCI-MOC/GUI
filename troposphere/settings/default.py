@@ -182,6 +182,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # This Method will generate SECRET_KEY and write it to file..
+
+
 def generate_secret_key(secret_key_path):
     """
     Generates a unique `SECRET_KEY` upon each service start
@@ -200,6 +202,7 @@ def generate_secret_key(secret_key_path):
     with open(secret_key_path, "w") as key_file:
         key_file.write(comment_block)
         key_file.write("SECRET_KEY=\"%s\"\n" % secret_value)
+
 
 # This import will Use an existing SECRET_KEY, or Generate your SECRET_KEY
 # if it doesn't exist yet.

@@ -72,4 +72,3 @@ def web_shell(request):
         raise PermissionDenied
 
     return response
-

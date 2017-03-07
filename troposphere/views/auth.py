@@ -51,9 +51,11 @@ def _mock_login(request):
         return redirect(redirect_url)
     return redirect('application')
 
+
 def _get_user_profile(user):
     user_profile = {"username": user.username, "firstName": user.first_name, "lastName": user.last_name, "email": user.email}
     return user_profile
+
 
 def _post_login(request):
     if len(request.POST) == 0:
@@ -154,6 +156,7 @@ def set_redirect_in_session(request):
     if redirect_url:
         request.session['redirect_to'] = redirect_url
     return
+
 
 def _oauth_login(request):
     set_redirect_in_session(request)

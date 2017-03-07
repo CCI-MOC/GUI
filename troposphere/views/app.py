@@ -279,7 +279,6 @@ def application_backdoor(request):
     return redirect('/login?%s' % (urlencode(query_arguments),))
 
 
-
 def application(request):
     maintenance_records, disabled_login, in_maintenance = \
         get_maintenance(request)

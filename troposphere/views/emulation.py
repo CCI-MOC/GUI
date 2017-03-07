@@ -16,6 +16,7 @@ cas_oauth_client = CAS_OAuthClient(settings.CAS_SERVER,
                                    settings.OAUTH_CLIENT_SECRET,
                                    auth_prefix=settings.CAS_AUTH_PREFIX)
 
+
 def is_emulated_session(request):
     """
     Indicates if the session being handled is someone _emulating_
@@ -87,7 +88,6 @@ def unemulate(request):
     logger.info("[EMULATE]Session_token: %s. Request to remove emulation."
                 % (old_token, ))
     request.session['access_token'] = old_token
-
 
     if "username" in request.session:
         del request.session['username']
