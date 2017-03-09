@@ -64,7 +64,7 @@ export default React.createClass({
                 linksArray.push(
                     <Button style={style}
                         key="Resize"
-                        icon="fire"
+                        icon="repeat"
                         tooltip="Resize"
                         onClick={this.onResize}
                         isVisible={true} />
