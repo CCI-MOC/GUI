@@ -17,7 +17,7 @@ export default Backbone.Model.extend({
 
         return (
         globals.API_V2_ROOT +
-        "/instance/" + instanceId +
+        "/instances/" + instanceId +
         "/actions"
         )
     }
