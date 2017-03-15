@@ -6,8 +6,6 @@ import stores from "stores";
 import Router from "../Router";
 import routes from "../AppRoutes";
 
-import Raven from "raven-js";
-
 export default React.createClass({
     displayName: "SplashScreen",
 
@@ -55,16 +53,6 @@ export default React.createClass({
                 //created_at: 1234567890
                 });
             }
-
-            if (Raven && Raven.isSetup()){
-                Raven.setUserContext({
-                    id: profile.get("user"),
-                    name: profile.get("username"),
-                    email: profile.get("email"),
-                    username: profile.get("username")
-                });
-            }
-
             this.startApplication();
         }
     },
