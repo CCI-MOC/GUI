@@ -37,24 +37,7 @@ export default React.createClass({
             //context.nullProject = nullProject;
 
             // if the emulator token exists, the user is being emulated by staff
-            // in that case, this doesn't count as a real session, so don't report
-            // it to Intercom.
             isEmulatedUser = !!window.emulator_token;
-
-            if (!isEmulatedUser) {
-                window.Intercom("boot", {
-                    app_id: window.intercom_app_id,
-                    name: profile.get("username"),
-                    username: profile.get("username"),
-                    email: profile.get("email"),
-                    company: {
-                        id: window.intercom_company_id,
-                        name: window.intercom_company_name
-                    }
-                // TODO: The current logged in user's sign-up date as a Unix timestamp.
-                //created_at: 1234567890
-                });
-            }
 
             if (Raven && Raven.isSetup()){
                 Raven.setUserContext({
