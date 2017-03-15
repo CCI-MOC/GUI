@@ -1,13 +1,6 @@
-language: python
-
-python:
-  - "2.7"
-
-cache:
-  - pip
-
-install:
-  - pip install flake8
-
+language: node_js
+node_js:
+  - "4.6"
 script:
-  - flake8 .
+  - "npm run build"
+  - "npm run travis-lint"
