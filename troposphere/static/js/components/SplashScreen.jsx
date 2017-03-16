@@ -28,16 +28,12 @@ export default React.createClass({
         var profile = stores.ProfileStore.get(),
             instances = stores.InstanceStore.getAll(),
             volumes = stores.VolumeStore.getAll(),
-            isEmulatedUser;
 
         if (profile && instances && volumes) {
 
             // set user context
             context.profile = profile;
             //context.nullProject = nullProject;
-
-            // if the emulator token exists, the user is being emulated by staff
-            isEmulatedUser = !!window.emulator_token;
 
             if (Raven && Raven.isSetup()){
                 Raven.setUserContext({
