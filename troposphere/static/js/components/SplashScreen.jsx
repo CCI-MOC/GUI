@@ -73,8 +73,6 @@ export default React.createClass({
             // you might want to push the state of the router to a store for whatever reason
             // RouterActions.routeChange({routerState: state});
 
-            // Update intercom so users get any messages sent to them
-            window.Intercom("update");
 
             // whenever the url changes, this callback is called again
             ReactDOM.render(<Handler/>, document.getElementById("application"));

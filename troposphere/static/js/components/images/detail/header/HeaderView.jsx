@@ -4,7 +4,6 @@ import Backbone from "backbone";
 import $ from "jquery";
 import stores from "stores";
 import modals from "modals";
-import { trackAction } from "utilities/userActivity";
 import Bookmark from "../../common/Bookmark";
 
 export default React.createClass({
@@ -28,7 +27,6 @@ export default React.createClass({
             image: this.props.image,
             initialView: "BASIC_VIEW"
         });
-        trackAction("launched-from-image-detail", {});
     },
 
     showAddProjectModal: function(e) {

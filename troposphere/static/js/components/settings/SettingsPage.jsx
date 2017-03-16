@@ -1,4 +1,3 @@
-import { trackAction } from "../../utilities/userActivity";
 import React from "react";
 import AdvancedSettingsPage from "components/settings/AdvancedSettingsPage";
 import IconSelect from "./IconSelect";
@@ -46,9 +45,6 @@ export default React.createClass({
     },
 
     handleRequestMoreResources: function(e) {
-        trackAction("made-resource-request", {
-            element: "from-settings"
-        });
         e.preventDefault();
         modals.HelpModals.requestMoreResources();
     },
