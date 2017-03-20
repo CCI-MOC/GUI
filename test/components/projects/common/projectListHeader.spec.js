@@ -1,5 +1,4 @@
 import React from 'react';
-import {shallow} from 'enzyme';
 
 describe("Project List Header", function() {
     var ReactTestUtils = require('react-addons-test-utils'),
