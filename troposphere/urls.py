@@ -44,6 +44,6 @@ urlpatterns = [
         include(ui_urlpatterns)),
 ]
 
-#NOTE: For backward-compatibility... leave the 'non-base-url' endpoints available..
+# NOTE: For backward-compatibility... leave the 'non-base-url' endpoints available..
 urlpatterns += ui_urlpatterns
 urlpatterns += staticfiles_urlpatterns()
