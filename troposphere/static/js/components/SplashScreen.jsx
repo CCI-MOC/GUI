@@ -25,7 +25,7 @@ export default React.createClass({
     updateState: function() {
         var profile = stores.ProfileStore.get(),
             instances = stores.InstanceStore.getAll(),
-            volumes = stores.VolumeStore.getAll(),
+            volumes = stores.VolumeStore.getAll();
 
         if (profile && instances && volumes) {
             // set user context
