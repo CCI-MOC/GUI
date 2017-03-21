@@ -4,8 +4,6 @@ import stores from "stores";
 import ToggleButton from "components/common/ToggleButton";
 import SelectMenu from "components/common/ui/SelectMenu";
 
-import { trackAction } from "../../utilities/userActivity";
-
 
 export default React.createClass({
     displayName: "AccountCreateView",
@@ -140,7 +138,6 @@ export default React.createClass({
             }
             this.props.onConfirm(accountPostData);
         }
-        trackAction("created-account", {});
         this.setState({
             showValidation: true
         });
