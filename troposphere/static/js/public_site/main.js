@@ -9,5 +9,4 @@ if(!window.SENTRY_ENABLED) {
     }).install();
 }
 
-
 bootstrapper.run();
