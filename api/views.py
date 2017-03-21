@@ -99,9 +99,9 @@ class BadgeViewSet(viewsets.GenericViewSet):
             }
         }
         r = requests.post(url + path,
-                data=body,
-                headers=options['headers'],
-                verify=False)
+                          data=body,
+                          headers=options['headers'],
+                          verify=False)
 
         return Response(data=r.json(), status=status.HTTP_201_CREATED)
 
@@ -140,8 +140,8 @@ class BadgeViewSet(viewsets.GenericViewSet):
         }
 
         r = requests.get(url + path,
-                headers=options['headers'],
-                verify=False)
+                         headers=options['headers'],
+                         verify=False)
 
         return Response(data=r.json(), status=status.HTTP_200_OK)
 
