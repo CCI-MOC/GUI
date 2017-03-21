@@ -71,7 +71,7 @@ const links = [
 let LoginLink = React.createClass({
     onLogin: function(e) {
         e.preventDefault();
-        modals.PublicModals.showPublicLoginModal();
+        modals.showLoginModal();
     },
     renderLink: function() {
         if(window.use_login_selection) {

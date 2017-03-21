@@ -4,7 +4,7 @@ import globals from "globals";
 
 
 export default React.createClass({
-    displayName: "PublicSupportModal",
+    displayName: "SupportModal",
 
     mixins: [BootstrapModalMixin],
 

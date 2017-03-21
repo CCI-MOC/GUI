@@ -176,24 +176,11 @@
     <!-- Application dependencies -->
     {% render_bundle 'manifest' 'js' %}
     {% render_bundle 'vendor' 'js' %}
-
-    {% if show_public_site %}
-    {% render_bundle 'public' 'js' %}
-    {% else %}
     {% render_bundle 'app' 'js' %}
-    {% endif %}
-    <!-- Google Analytics -->
-    {% render_bundle 'analytics' 'js' %}
 {% else %}
     <script src="{{ BASE_URL }}/assets/bundles/manifest.js"></script>
     <script src="{{ BASE_URL }}/assets/bundles/vendor.js"></script>
-    {% if show_public_site %}
-    <script src="{{ BASE_URL }}/assets/bundles/public.js"></script>
-    {% else %}
     <script src="{{ BASE_URL }}/assets/bundles/app.js"></script>
-    {% endif %}
-    <!-- Google Analtics -->
-    <script src="{{ BASE_URL }}/assets/bundles/analytics.js"></script>
 {% endif %}
 </body>
 </html>

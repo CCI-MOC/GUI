@@ -5,7 +5,7 @@ import LoginScreen from "components/login/LoginScreen.jsx";
 
 
 export default React.createClass({
-    displayName: "PublicLoginModal",
+    displayName: "LoginModal",
 
     mixins: [BootstrapModalMixin],
 

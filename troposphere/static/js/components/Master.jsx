@@ -112,16 +112,6 @@ export default React.createClass({
 
     render: function() {
 
-        if (!window.show_public_site && !context.hasLoggedInUser()) {
-            //Users who ARE logged in, but without an identity
-            //cannot be handled in the application, currently.
-            //These users are punted now.
-            var username = context.profile.get("username"),
-                errorText = "User <" + username + "> was authenticated, but has no available, active identities. Contact your Cloud Administrator.",
-                error_status = encodeURIComponent(errorText);
-            window.location = "/forbidden?banner=" + error_status;
-        }
-
         var maintenanceMessages = stores.MaintenanceMessageStore.getAll() || new Backbone.Collection(),
             marginTop = maintenanceMessages.length * 24 + "px";
 
