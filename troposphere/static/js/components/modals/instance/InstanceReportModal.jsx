@@ -2,7 +2,6 @@ import React from "react";
 import BootstrapModalMixin from "components/mixins/BootstrapModalMixin";
 import Glyphicon from "components/common/Glyphicon";
 import _ from "underscore";
-import { trackAction } from "../../../utilities/userActivity";
 
 export default React.createClass({
     displayName: "InstanceReportModal",
@@ -61,7 +60,6 @@ export default React.createClass({
         this.hide();
         var reportInfo = this.getReportInfo();
         this.props.onConfirm(reportInfo);
-        trackAction("reported-instance", {});
     },
 
     //
