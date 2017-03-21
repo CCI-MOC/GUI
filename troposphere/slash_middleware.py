@@ -45,6 +45,7 @@ class RemoveSlashMiddleware(object):
             new_url += '?' + request.META['QUERY_STRING']
         return http.HttpResponseRedirect(new_url)
 
+
 def _is_valid_path(path, urlconf=None):
     """
     Returns True if the given path resolves against the default URL resolver,
@@ -55,5 +56,3 @@ def _is_valid_path(path, urlconf=None):
         return True
     except urlresolvers.Resolver404:
         return False
-
-""" Author contact: sepero 111 @ gmail . com """

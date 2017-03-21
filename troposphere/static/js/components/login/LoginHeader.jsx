@@ -7,7 +7,6 @@ import modals from 'modals';
 import context from 'context';
 import globals from 'globals';
 
-import { trackAction } from 'utilities/userActivity';
 import { hasLoggedInUser } from 'utilities/profilePredicate';
 
 //TODO: I dont know where this component is used -- modified to ensure consistency

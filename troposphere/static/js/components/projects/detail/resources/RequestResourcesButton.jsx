@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import modals from "modals";
-import { trackAction } from "../../../../utilities/userActivity";
 
 export default React.createClass({
     displayName: "RequestResourcesButton",
@@ -31,9 +30,6 @@ export default React.createClass({
         modals.HelpModals.requestMoreResources();
         // Fixes a bug in FireFox where the tooltip doesn't go away when button is clicked
         this.hideTooltip();
-        trackAction("made-resource-request", {
-            element: "from-project"
-        });
     },
 
     render: function() {

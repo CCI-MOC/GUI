@@ -6,8 +6,6 @@ import stores from "stores";
 import Router from "../Router";
 import routes from "../AppRoutes";
 
-import Raven from "raven-js";
-
 export default React.createClass({
     displayName: "SplashScreen",
 
@@ -27,44 +25,12 @@ export default React.createClass({
     updateState: function() {
         var profile = stores.ProfileStore.get(),
             instances = stores.InstanceStore.getAll(),
-            volumes = stores.VolumeStore.getAll(),
-            isEmulatedUser;
+            volumes = stores.VolumeStore.getAll();
 
         if (profile && instances && volumes) {
-
             // set user context
             context.profile = profile;
             //context.nullProject = nullProject;
-
-            // if the emulator token exists, the user is being emulated by staff
-            // in that case, this doesn't count as a real session, so don't report
-            // it to Intercom.
-            isEmulatedUser = !!window.emulator_token;
-
-            if (!isEmulatedUser) {
-                window.Intercom("boot", {
-                    app_id: window.intercom_app_id,
-                    name: profile.get("username"),
-                    username: profile.get("username"),
-                    email: profile.get("email"),
-                    company: {
-                        id: window.intercom_company_id,
-                        name: window.intercom_company_name
-                    }
-                // TODO: The current logged in user's sign-up date as a Unix timestamp.
-                //created_at: 1234567890
-                });
-            }
-
-            if (Raven && Raven.isSetup()){
-                Raven.setUserContext({
-                    id: profile.get("user"),
-                    name: profile.get("username"),
-                    email: profile.get("email"),
-                    username: profile.get("username")
-                });
-            }
-
             this.startApplication();
         }
     },
@@ -90,8 +56,6 @@ export default React.createClass({
             // you might want to push the state of the router to a store for whatever reason
             // RouterActions.routeChange({routerState: state});
 
-            // Update intercom so users get any messages sent to them
-            window.Intercom("update");
 
             // whenever the url changes, this callback is called again
             ReactDOM.render(<Handler/>, document.getElementById("application"));

@@ -16,6 +16,7 @@ cas_oauth_client = CAS_OAuthClient(settings.CAS_SERVER,
                                    settings.OAUTH_CLIENT_SECRET,
                                    auth_prefix=settings.CAS_AUTH_PREFIX)
 
+
 def is_emulated_session(request):
     """
     Indicates if the session being handled is someone _emulating_
@@ -41,7 +42,7 @@ def emulate(request, username):
     if hasattr(settings, "EMULATED_SESSION_COOKIE_AGE"):
         request.session.set_expiry(settings.EMULATED_SESSION_COOKIE_AGE)
         logger.info("[EMULATE]Session length set to: %s seconds"
-            % settings.EMULATED_SESSION_COOKIE_AGE)
+                    % settings.EMULATED_SESSION_COOKIE_AGE)
 
     r = requests.get(
         os.path.join(settings.API_SERVER, "api/v1/token_emulate/%s" % username),
@@ -54,7 +55,7 @@ def emulate(request, username):
         return redirect('application')
 
     # Check if error response was sent
-    if r.status_code < 200 or  r.status_code > 299:
+    if r.status_code < 200 or r.status_code > 299:
         logger.warn("[EMULATE] failed with status_code=%s and message=(%s)",
                     r.status_code, j_data)
         return redirect("application")
@@ -87,7 +88,6 @@ def unemulate(request):
     logger.info("[EMULATE]Session_token: %s. Request to remove emulation."
                 % (old_token, ))
     request.session['access_token'] = old_token
-
 
     if "username" in request.session:
         del request.session['username']
