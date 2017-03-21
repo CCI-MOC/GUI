@@ -1,7 +1,7 @@
 import "babel-polyfill";
 import bootstrapper from "bootstrapper";
 import "css/app/app.scss";
-import Raven from "raven-js";
+
 
 
 if(!window.SENTRY_ENABLED) {
@@ -10,5 +10,6 @@ if(!window.SENTRY_ENABLED) {
         release: window.SENTRY_RELEASE
     }).install();
 }
+
 
 bootstrapper.run();

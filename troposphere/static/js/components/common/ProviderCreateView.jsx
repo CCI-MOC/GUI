@@ -2,7 +2,6 @@ import React from "react";
 import moment from "moment";
 import ToggleButton from "components/common/ToggleButton";
 
-import { trackAction } from "../../utilities/userActivity";
 
 export default React.createClass({
     displayName: "ProviderCreateView",
@@ -174,7 +173,6 @@ export default React.createClass({
             }
             this.props.onConfirm(provider_post_data);
         }
-        trackAction("created-provider", {});
         this.setState({
             showValidation: true
         });

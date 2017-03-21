@@ -10,10 +10,10 @@ import sys
 
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
-if os.environ.has_key("VIRTUAL_ENV_PATH"):
-  virtual_env_path = os.environ["VIRTUAL_ENV_PATH"]
+if "VIRTUAL_ENV_PATH" in os.environ:
+    virtual_env_path = os.environ["VIRTUAL_ENV_PATH"]
 else:
-  virtual_env_path = "/opt/env/troposphere/lib/python2.7/site-packages"
+    virtual_env_path = "/opt/env/troposphere/lib/python2.7/site-packages"
 
 sys.path.insert(0, virtual_env_path)
 sys.path.insert(1, root_dir)
@@ -25,18 +25,18 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "troposphere.settings"
 from django.conf import settings
 
 if hasattr(settings, "NEW_RELIC_ENVIRONMENT"):
-  try:
-      import newrelic.agent
-      newrelic.agent.initialize(
-        os.path.join(root_dir, "extras/newrelic/troposphere_newrelic.ini"),
-        settings.NEW_RELIC_ENVIRONMENT)
-      print "[T]Plugin: New Relic initialized!"
-  except ImportError, bad_import:
-      print "[T]Warning: newrelic not installed.."
-      print bad_import
-  except Exception, bad_config:
-      print "[T]Warning: newrelic not initialized.."
-      print bad_config
+    try:
+        import newrelic.agent
+        newrelic.agent.initialize(
+            os.path.join(root_dir, "extras/newrelic/troposphere_newrelic.ini"),
+            settings.NEW_RELIC_ENVIRONMENT)
+        print "[T]Plugin: New Relic initialized!"
+    except ImportError, bad_import:
+        print "[T]Warning: newrelic not installed.."
+        print bad_import
+    except Exception, bad_config:
+        print "[T]Warning: newrelic not initialized.."
+        print bad_config
 else:
     print "[T]Plugin: Skipping New Relic setup. NEW_RELIC_ENVIRONMENT not defined in local.py"
 

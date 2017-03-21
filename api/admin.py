@@ -14,7 +14,7 @@ class UserPreferencesAdmin(admin.ModelAdmin):
 
 @admin.register(SiteMetadata)
 class SiteMetadataAdmin(admin.ModelAdmin):
-    actions = None # disable the `delete selected` action
+    actions = None  # disable the `delete selected` action
 
     list_display = [
         "user_portal_link",
@@ -34,7 +34,7 @@ class SiteMetadataAdmin(admin.ModelAdmin):
 
 @admin.register(MaintenanceNotice)
 class MaintenanceNoticeAdmin(admin.ModelAdmin):
-    actions = None # disable the `delete selected` action
+    actions = None  # disable the `delete selected` action
 
     list_display = [
         "show_message",
