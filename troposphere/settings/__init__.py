@@ -1,5 +1,4 @@
-from troposphere.settings.default import *
 try:
-    from troposphere.settings.local import *
+    import troposphere.settings.local
 except ImportError:
     raise Exception("No local settings module found. Refer to README.md")
