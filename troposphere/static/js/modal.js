@@ -5,7 +5,15 @@ import ModalMixin from "components/mixins/modal";
 
 
 let ConfirmComponent = React.createClass({
+    propTypes: {
+      onConfirm: React.PropTypes.func.isRequired,
+      title: React.PropTypes.string.isRequired,
+      body: React.PropTypes.string.isRequired,
+      okButtonText: React.PropTypes.string.isRequired     
+    },
+
     mixins: [ModalMixin],
+    
     getDefaultProps: function() {
         return {
             okButtonText: "OK"
