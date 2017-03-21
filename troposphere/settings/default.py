@@ -181,8 +181,6 @@ AUTHENTICATION_BACKENDS = (
     'django_cyverse_auth.authBackends.OAuthLoginBackend'
 )
 
-# This Method will generate SECRET_KEY and write it to file..
-
 
 def generate_secret_key(secret_key_path):
     """
