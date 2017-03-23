@@ -27,6 +27,7 @@ import BasicLaunchStep from "./launch/steps/BasicLaunchStep";
 import AdvancedLaunchStep from "./launch/steps/AdvancedLaunchStep";
 import LicenseStep from "./launch/steps/LicenseStep";
 
+import SSHCreateView from "components/common/SSHCreateView";
 // This class implements the instance launch walkthrough. By design it keeps
 // track of two states. First is the state for switching between separate
 // views of the modal. The second is the state for launching an actual
@@ -62,12 +63,15 @@ export default React.createClass({
             }
         }
 
+        let sshKey = stores.SSHKeyStore.getAll();
+
         return {
             // State for general operation (switching views, etc)
             view,
             image,
             provider: null,
             showValidationErr: false,
+            sshKey,
 
             // State for launch
             instanceName,
@@ -206,6 +210,12 @@ export default React.createClass({
     viewProject: function() {
         this.setState({
             view: "PROJECT_VIEW"
+        });
+    },
+
+    viewSSH: function() {
+        this.setState({
+            view: "SSH_VIEW"
         });
     },
 
@@ -403,10 +413,32 @@ export default React.createClass({
     },
 
     onProjectCreateConfirm: function(name, description) {
-        this.viewBasic();
+        let sshKey = stores.SSHKeyStore.getAll();
+        if (sshKey) {
+            if (this.view != "IMAGE_VIEW" && sshKey.length === 0) {
+                this.view = "SSH_VIEW";
+                this.viewSSH();
+            } else {
+                this.viewBasic();
+            }
+        }
         actions.ProjectActions.create({
             name: name,
             description
+        });
+    },
+
+    onSSHConfirm: function(name, description) {
+        this.viewBasic();
+        var profile = stores.ProfileStore.get();
+        stores.SSHKeyStore.models.create({
+            atmo_user: profile.get("user"),
+            name: name,
+            pub_key: description,
+        }, {
+            success: function() {
+                stores.SSHKeyStore.emitChange();
+            },
         });
     },
 
@@ -531,6 +563,8 @@ export default React.createClass({
                 return this.renderImageSelect()
             case "PROJECT_VIEW":
                 return this.renderProjectCreateStep()
+            case "SSH_VIEW":
+                return this.renderSSH()
             case "BASIC_VIEW":
                 return this.renderBasicOptions()
             case "ADVANCED_VIEW":
@@ -547,6 +581,8 @@ export default React.createClass({
                 return "Select an Image"
             case "PROJECT_VIEW":
                 return "Create New Project"
+            case "SSH_VIEW":
+                return "SSH Upload"
             case "BASIC_VIEW":
                 return "Basic Options"
             case "ADVANCED_VIEW":
@@ -569,6 +605,12 @@ export default React.createClass({
     renderProjectCreateStep: function() {
         return (
         <ProjectCreateView cancel={this.hide} onConfirm={this.onProjectCreateConfirm} />
+        );
+    },
+
+    renderSSH: function() {
+        return (
+        <SSHCreateView cancel={this.hide} onConfirm={this.onSSHConfirm} />
         );
     },
 
