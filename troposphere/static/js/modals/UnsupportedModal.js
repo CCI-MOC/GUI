@@ -11,7 +11,7 @@ import ModalHelpers from "components/modals/ModalHelpers";
 
 const UnsupportedModal = React.createClass({
     propTypes: {
-      onConfirm: React.PropTypes.func.isRequired,
+      onConfirm: React.PropTypes.func.isRequired
     },
     
     displayName: "UnsupportedModal",
