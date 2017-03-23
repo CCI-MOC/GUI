@@ -117,9 +117,6 @@ let LogoutLink = React.createClass({
         let statusPageEl;
         let username = this.props.username;
 
-        if (!username && window.show_public_site) {
-            username = "AnonymousUser"
-        }
         if (globals.STATUS_PAGE_LINK) {
             statusPageEl = (
                 <li>
@@ -135,11 +132,6 @@ let LogoutLink = React.createClass({
         let trackRequests = () => {
             trackAction("viewed-requests", {});
         };
-
-        if (!username && window.show_public_site) {
-            username = "AnonymousUser"
-        }
-
 
         return (
         <li className="dropdown">

@@ -74,8 +74,6 @@ module.exports = {
   entry: {
     vendor: Object.keys(pkg.dependencies),
     app: "./main",
-    analytics: "./analytics",
-    public: "./public_site/main"
   },
   context: PATHS.context,
   output: outputCfg,

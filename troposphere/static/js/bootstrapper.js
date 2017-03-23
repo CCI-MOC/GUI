@@ -123,8 +123,8 @@ modals.TagModals = require("modals/TagModals");
 modals.VersionModals = require("modals/VersionModals");
 modals.VolumeModals = require("modals/VolumeModals");
 modals.UnsupportedModal = require("modals/UnsupportedModal");
-modals.LoginModals = require("modals/LoginModal");
-modals.SupportModals = require("modals/SupportModal");
+modals.LoginModals = require("components/modals/LoginModal");
+modals.SupportModals = require("components/modals/SupportModal");
 
 export default {
     run: function() {
