@@ -8,7 +8,6 @@ import MaintenanceMessageBanner from './MaintenanceMessageBanner';
 import context from 'context';
 import globals from 'globals';
 
-import { trackAction } from 'utilities/userActivity';
 import { hasLoggedInUser } from 'utilities/profilePredicate';
 import { deleteCookie } from "utilities/cookieHelpers";
 
@@ -120,18 +119,9 @@ let LogoutLink = React.createClass({
             username = "AnonymousUser"
         }
 
-        let trackSettings = () => {
-            trackAction("viewed-settings", {});
-        };
-
-        let trackRequests = () => {
-            trackAction("viewed-requests", {});
-        };
-
         if (!username && window.show_public_site) {
             username = "AnonymousUser"
         }
-
 
         return (
         <li className="dropdown">
@@ -139,11 +129,11 @@ let LogoutLink = React.createClass({
                 {username} <b className="caret"></b></a>
             <ul className="dropdown-menu">
                 <li>
-                    <Link to="settings" onClick={trackSettings}> Settings
+                    <Link to="settings"> Settings
                     </Link>
                 </li>
                 <li>
-                    <Link to="my-requests-resources" onClick={trackRequests}> My requests
+                    <Link to="my-requests-resources"> My requests
                     </Link>
                 </li>
                 <li>

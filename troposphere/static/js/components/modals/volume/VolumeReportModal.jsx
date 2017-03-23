@@ -2,7 +2,6 @@ import _ from "underscore";
 import React from "react";
 import BootstrapModalMixin from "components/mixins/BootstrapModalMixin";
 import Glyphicon from "components/common/Glyphicon";
-import { trackAction } from "../../../utilities/userActivity";
 
 export default React.createClass({
     displayName: "VolumeReportModal",
@@ -60,7 +59,6 @@ export default React.createClass({
         this.hide();
         var reportInfo = this.getReportInfo();
         this.props.onConfirm(reportInfo);
-        trackAction("reported-volume", {});
     },
 
     //

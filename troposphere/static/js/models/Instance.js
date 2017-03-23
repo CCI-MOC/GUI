@@ -172,5 +172,5 @@ export default Backbone.Model.extend({
         if (instanceUrl.slice(-1) !== "/")
             instanceUrl += "/";
         return instanceUrl + "action";
-    },
+    }
 });

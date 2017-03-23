@@ -7,7 +7,6 @@ export default React.createClass({
     displayName: "MaintenanceScreen",
 
     render: function() {
-        var statusPageEl,
             imageParentStyle = {
                 "display": "block",
                 "margin": "auto",
@@ -24,7 +23,6 @@ export default React.createClass({
             <h4 className="t-title">
                 Atmosphere is currently under maintenance.
             </h4>
-            {statusPageEl}
         </div>
         );
     }

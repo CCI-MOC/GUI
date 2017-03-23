@@ -28,7 +28,7 @@ GraphController.prototype.switch = function(settings, onSuccess, onError) {
     // Fetch data/build graphs for a timeframe
     if (graphs == undefined) {
 
-        var graphs = [["cpu", CPUGraph], ["mem", MemoryGraph], ["net", NetworkGraph]];
+        graphs = [["cpu", CPUGraph], ["mem", MemoryGraph], ["net", NetworkGraph]];
         graphs = graphs.map((data) => {
             return new data[1]({
                 type: data[0],

@@ -1,6 +1,8 @@
 import json
 import logging
 import time
+import hmac
+import hashlib
 
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
@@ -13,7 +15,6 @@ logger = logging.getLogger(__name__)
 
 
 def _create_signature(secret, *parts):
-    import hmac, hashlib
     hash = hmac.new(secret, digestmod=hashlib.sha1)
     for part in parts:
         hash.update(str(part))
@@ -25,7 +26,7 @@ def web_shell(request):
     shell_user = request.user
     if request.session:
         logger.info("request.session: %s" % request.session.items())
-        atmo_username = request.session.get('username','')
+        atmo_username = request.session.get('username', '')
         atmo_user = TroposphereUser.objects.filter(username=atmo_username).first()
         if atmo_user:
             shell_user = atmo_user
@@ -45,11 +46,11 @@ def web_shell(request):
         }
 
         sig = _create_signature(secret, authobj['api_key'],
-                authobj['upn'], authobj['timestamp'])
+                                authobj['upn'], authobj['timestamp'])
 
         # GATE_ONE_API_AUTH_SETTINGS
         template_params = {
-            'WEB_SH_BASE_URL' : settings.WEB_SH_BASE_URL,
+            'WEB_SH_BASE_URL': settings.WEB_SH_BASE_URL,
             'WEB_SH_JS_FILE': 'static/gateone.js',
             'GATE_ONE_API_KEY': authobj['api_key'],
             'USERNAME': authobj['upn'],
@@ -63,13 +64,12 @@ def web_shell(request):
             template_params['gate_one_location'] = request.GET['location']
 
         response = render_to_response(
-                'web_shell.html',
-                template_params,
-                context_instance=RequestContext(request)
+            'web_shell.html',
+            template_params,
+            context_instance=RequestContext(request)
         )
     else:
         logger.info("not authenticated: \nrequest:\n %s" % request)
         raise PermissionDenied
 
     return response
-

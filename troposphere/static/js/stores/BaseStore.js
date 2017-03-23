@@ -206,15 +206,16 @@ _.extend(Store.prototype, Backbone.Events, {
 
     // same as fetchFirstPage, but with URL query params
     fetchFirstPageWhere: function(queryParams, options, cb) {
+        var queryString = ""
         if (options && options.clearQueryCache) {
-            var queryString = buildQueryStringFromQueryParams(queryParams);
+            queryString = buildQueryStringFromQueryParams(queryParams);
             delete this.queryModels[queryString];
         }
 
         if (!this.isFetching) {
             this.isFetching = true;
             queryParams = queryParams || {};
-            var queryString = buildQueryStringFromQueryParams(queryParams);
+            queryString = buildQueryStringFromQueryParams(queryParams);
             var models = new this.collection();
 
             models.fetch({
@@ -481,7 +482,7 @@ _.extend(Store.prototype, Backbone.Events, {
             pollingDelay = this.pollingFrequency;
         }
         setTimeout(this.pollNowUntilBuildIsFinished.bind(this, model), pollingDelay);
-    },
+    }
 });
 
 Store.extend = Backbone.Model.extend;
