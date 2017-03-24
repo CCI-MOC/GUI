@@ -5,7 +5,7 @@ describe("Project List Header", function() {
         ProjectListHeader = React.createFactory(require("../../../../troposphere/static/js/components/projects/common/ProjectListHeader")),
         title;
     it("should display the provided title", function() {
-        title = "3" + "Projects"
+        title = "Projects"
         var header = ProjectListHeader({
             title: title
         });
