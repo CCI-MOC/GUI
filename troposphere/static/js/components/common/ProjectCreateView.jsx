@@ -1,5 +1,4 @@
 import React from "react";
-import { trackAction } from "../../utilities/userActivity";
 
 export default React.createClass({
     displayName: "ProjectCreateView",
@@ -67,7 +66,6 @@ export default React.createClass({
             this.props.onConfirm(this.state.projectName.trim(),
                                  this.state.projectDescription.trim());
         }
-        trackAction("created-project", {});
         this.setState({
             showValidation: true
         });

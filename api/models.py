@@ -89,6 +89,7 @@ portal_link_text_help_text = """
     Text used for User Portal hyperlink; state exactly as should appear.
 """
 
+
 class SiteMetadata(SingletonModel):
     """
     A single model to represent metadata about the installation `site`
@@ -138,7 +139,6 @@ class SiteMetadata(SingletonModel):
         up["link"] = str(self.user_portal_link)
         up["text"] = str(self.user_portal_link_text)
         return up
-
 
     class Meta:
         db_table = 'site_metadata'
