@@ -23,7 +23,7 @@
     "jenkins": "webpack --profile --colors --",
     "test": "jest",
     "stats": "webpack --profile --json > stats.json",
-    "lint": "eslint troposphere/static/js",
+    "lint": "eslint troposphere/static/js test",
     "travis-lint": "eslint -c .eslintrc.travis --no-eslintrc troposphere/static/js",
     "lint-pre-commit": "eslint --stdin",
     "format-check": "esformatter -c .esformatter --diff $(git ls-files troposphere/static/js*js) || exit 0",
@@ -90,6 +90,39 @@
     "webpack-bundle-tracker": "0.0.93",
     "webpack-dev-server": "^1.14.1",
     "yuglify": "~0.1.4"
+  },
+  "jest": {
+    "verbose": true,
+    "rootDir": "/opt/dev/troposphere",
+    "roots": [
+      "<rootDir>/test/",
+      "<rootDir>/troposphere/static/js/"
+    ],
+    "moduleNameMapper": {
+      "^globals$": "<rootDir>/troposphere/static/js/globals.js",
+      "^actions$": "<rootDir>/troposphere/static/js/actions.js",
+      "^controllers/NotificationController$": "<rootDir>/troposphere/static/js/controllers/NotificationController.js",
+      "^components/SplashScreen$": "<rootDir>/troposphere/static/js/components/SplashScreen.jsx",
+      "^context":  "<rootDir>/troposphere/static/js/context.js",
+      "^utilities/profilePredicate$": "<rootDir>/troposphere/static/js/utilities/profilePredicate.js",
+      "^stores$": "<rootDir>/troposphere/static/js/stores.js",
+      "^modals$": "<rootDir>/troposphere/static/js/modals.js",
+      "^utilities/cookieHelpers$": "<rootDir>/troposphere/static/js/utilities/cookieHelpers.js",
+      "^components/modals/unsupported/modernizrTest$": "<rootDir>/troposphere/static/js/components/modals/unsupported/modernizrTest.js",
+      "^lib/modernizr-latest$": "<rootDir>/troposphere/static/js/lib/modernizr-latest.js",
+      "^components/common/ui/SelectMenu$": "<rootDir>/troposphere/static/js/components/common/ui/SelectMenu.jsx",
+      "^actions/Utils$": "<rootDir>/troposphere/static/js/actions/Utils.js",
+      "^dispatchers/AppDispatcher$": "<rootDir>/troposphere/static/js/dispatchers/AppDispatcher.js",
+      "^dispatchers/Dispatcher$": "<rootDir>/troposphere/static/js/dispatchers/Dispatcher.js",
+      "^stores/BaseStore$": "<rootDir>/troposphere/static/js/stores/BaseStore.js",
+      "^collections/ProviderCollection$": "<rootDir>/troposphere/static/js/collections/ProviderCollection.js",
+      "^models/Provider$": "<rootDir>/troposphere/static/js/models/Provider.js",
+      "^constants/ProviderConstants$": "<rootDir>/troposphere/static/js/constants/ProviderConstants.js"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ] 
   },
   "engines": {
       "npm": "3.*"
