@@ -93,7 +93,7 @@
   },
   "jest": {
     "verbose": true,
-    "rootDir": "/opt/dev/troposphere",
+    "rootDir": ".",
     "roots": [
       "<rootDir>/test/",
       "<rootDir>/troposphere/static/js/"
