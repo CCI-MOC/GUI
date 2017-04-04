@@ -24,5 +24,5 @@ export default Backbone.Model.extend({
         attributes.is_bookmarked = attributes.isFavorited;
         delete attributes["isFavorited"];
         return attributes;
-    },
+    }
 });
