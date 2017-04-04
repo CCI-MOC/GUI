@@ -124,14 +124,6 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
         template_params['disable_login'] = False
         template_params['SHOW_INSTANCE_METRICS'] = \
             getattr(settings, "SHOW_INSTANCE_METRICS", False)
-        # Only include Intercom information when rendering the authenticated
-        # version of the site.
-        if hasattr(settings, "INTERCOM_APP_ID"):
-            template_params['intercom_app_id'] = settings.INTERCOM_APP_ID
-            template_params['intercom_company_id'] = \
-                settings.INTERCOM_COMPANY_ID
-            template_params['intercom_company_name'] = \
-                settings.INTERCOM_COMPANY_NAME
 
     if enable_new_relic:
         template_params['new_relic_browser_snippet'] = \
