@@ -14,17 +14,6 @@ export default React.createClass({
             return <div className="loading"></div>;
         }
 
-            var hyperlink = helpLinks.get(resource.link_key).get("href");
-            return (
-            <li key={resource.title}>
-                <a href={hyperlink} target="_blank">
-                    {resource.title}
-                </a>
-                <span>{" " + resource.description}</span>
-            </li>
-            );
-        });
-
         return (
         <div style={{ paddingTop: "50px" }} className="container">
             <h1 className="t-display-1">Help Page</h1>
