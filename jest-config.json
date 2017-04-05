@@ -1,0 +1,15 @@
+{
+  "verbose": true,
+  "unmockedModulePathPatterns": [
+    "<rootDir>/node_modules/react"
+  ],
+  "transform": {".*": "<rootDir>/node_modules/babel-jest"},
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "moduleNameMapper": {
+    "^modals$": "<rootDir>/troposphere/static/js/modals.js",
+    "^components/common/ui/SelectMenu$": "<rootDir>/troposphere/static/js/components/common/ui/SelectMenu.jsx"
+  }
+}
