@@ -10,6 +10,7 @@
   ],
   "moduleNameMapper": {
     "^modals$": "<rootDir>/troposphere/static/js/modals.js",
-    "^components/common/ui/SelectMenu$": "<rootDir>/troposphere/static/js/components/common/ui/SelectMenu.jsx"
+    "^components/common/ui/SelectMenu$": "<rootDir>/troposphere/static/js/components/common/ui/SelectMenu.jsx",
+    "^context":  "<rootDir>/troposphere/static/js/context.js"
   }
 }
