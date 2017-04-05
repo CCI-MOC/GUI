@@ -12,6 +12,7 @@
     "^modals$": "<rootDir>/troposphere/static/js/modals.js",
     "^components/common/ui/SelectMenu$": "<rootDir>/troposphere/static/js/components/common/ui/SelectMenu.jsx",
     "^context":  "<rootDir>/troposphere/static/js/context.js",
-    "^utilities/profilePredicate$": "<rootDir>/troposphere/static/js/utilities/profilePredicate.js"
+    "^utilities/profilePredicate$": "<rootDir>/troposphere/static/js/utilities/profilePredicate.js",
+    "^globals$": "<rootDir>/troposphere/static/js/globals.js"
   }
 }
