@@ -8,7 +8,6 @@ export default React.createClass({
 
     render: function() {
         var helpLinks = stores.HelpLinkStore.getAll();
-        var resourceElements;
 
         if (!helpLinks) {
             return <div className="loading"></div>;
