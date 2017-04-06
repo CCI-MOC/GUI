@@ -87,11 +87,6 @@ STATICFILES_DIRS = [
 
 ORG_NAME= "{{ ORG_NAME }}"
 
-{% if INTERCOM_APP_ID is defined and not INTERCOM_APP_ID == "" %}
-INTERCOM_APP_ID = "{{ INTERCOM_APP_ID }}"
-INTERCOM_COMPANY_ID = "{{ INTERCOM_COMPANY_ID }}"
-INTERCOM_COMPANY_NAME = "{{ INTERCOM_COMPANY_NAME }}"
-{% endif %}
 
 {% if SESSION_COOKIE_AGE is defined and not SESSION_COOKIE_AGE == "" %}
 # expect integer; value is represented in seconds
