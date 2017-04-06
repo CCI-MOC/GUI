@@ -14,7 +14,7 @@ export default React.createClass({
         onUsernameChange: React.PropTypes.func,
         onPasswordChange: React.PropTypes.func,
     },
-        render: function() {
+    render: function() {
         let renderLoginOrLoadingFunc = this.props.renderLoginOrLoadingFunc;
         let {usernameClasses, passwordClasses, errorMessage, username, password, onEnterPressed, onUsernameChange, onPasswordChange, renderLoginOrLoading} = this.props;
         //FIXME: Shamefully using modal-footer : Get css-help later
