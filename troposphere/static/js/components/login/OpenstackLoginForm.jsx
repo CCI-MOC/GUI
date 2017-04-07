@@ -134,8 +134,15 @@ export default React.createClass({
         var renderLoginOrLoadingFunc = this.renderLoginOrLoading();
 
         return (
-            <LoginForm {...{username: this.state.username, password: this.state.password, usernameClasses, passwordClasses, errorMessage, renderLoginOrLoadingFunc, onUsernameChange: this.onUsernameChange, onPasswordChange: this.onPasswordChange, onEnterPressed: this.onEnterPressed}} />
+            <LoginForm {...{username: this.state.username,
+                            password: this.state.password,
+                            usernameClasses,
+                            passwordClasses,
+                            errorMessage,
+                            renderLoginOrLoadingFunc,
+                            onUsernameChange: this.onUsernameChange,
+                            onPasswordChange: this.onPasswordChange,
+                            onEnterPressed: this.onEnterPressed}} />
         );
     }
-
 });
