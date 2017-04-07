@@ -63,12 +63,12 @@ export default React.createClass({
         });
         this.renderAuthenticatedApplication();
     },
-    attemptOpenstackLogin: function(username, password, projectName, provider, onLoginError) {
+    attemptOpenstackLogin: function(username, password, provider, onLoginError) {
         actions.LoginActions.attemptOpenstackLogin(
-            username, password, projectName, provider,
+            username, password, provider,
             this.onOpenstackLogin, onLoginError);
     },
-    onOpenstackLogin: function(username, token, project_name, provider) {
+    onOpenstackLogin: function(username, token, provider) {
         //1. set window.access_token
         window.access_token = token;
         setCookie("auth_token", token);
@@ -87,7 +87,7 @@ export default React.createClass({
         if(provider != null) {
             provider_uuid = provider.get('uuid')
         }
-        var data = {username, token, project_name, provider: provider_uuid};
+        var data = {username, token, provider: provider_uuid};
         this.postTokenUpdate(data)
     },
     postTokenUpdate: function(data) {
@@ -124,18 +124,9 @@ export default React.createClass({
     },
     // Rendering
     renderLoginMethod: function() {
-        let method = this.state.loginProvider.get('method');
-        if (method == "password-login") {
-            return (<PasswordLoginForm
-                attemptLogin={this.attemptPasswordLogin}/>);
-        } else if (method == "openstack-login") {
-            return (<OpenstackLoginForm
-                attemptLogin={this.attemptOpenstackLogin}/>);
-        } else if (method == "oauth-login") {
-            return (<OAuthLoginForm
-                provider={this.state.loginProvider.get('provider')}
-                attemptLogin={this.attemptOAuthLogin}/>);
-        }
+        //At the MOC we only use the OpenstackLoginForm
+        //   May change this based on the provider when we support multiple providers
+        return (<OpenstackLoginForm attemptLogin={this.attemptOpenstackLogin}/>);
     },
     onIdentityProviderChange: function(idp) {
         this.setState({loginProvider:idp});
@@ -151,12 +142,6 @@ export default React.createClass({
         }
         return (
            <div id="main" className={mainClassnames} style={{"marginTop": "24px"}}>
-                   <h2 className="t-headline">Select Login Method:</h2>
-                    <SelectMenu id="login-screen-select"
-                                current={ this.state.loginProvider }
-                                optionName={ idp => idp.get('method') }
-                                list={ this.state.identityProviders }
-                                onSelect={ this.onIdentityProviderChange } />
                    {this.renderLoginMethod()}
            </div>
         );

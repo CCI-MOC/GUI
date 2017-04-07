@@ -5,7 +5,7 @@ import Events from "events";
 export default {
     fire(name, payload) {
         switch (name) {
-            case EventConstants.ALLOCATION_SOURCE_CHANGE:
+            case EventConstants.ALLOCATION_SOURCE_CHANGE: {
                 let { allocationSource, instance } = payload
                 return new Events.AllocationSourceChange({
                     name,
@@ -15,6 +15,7 @@ export default {
                         instance_id: instance.get("uuid")
                     }
                 }).save();
+            }
             default:
                 throw `Event of type: ${name} is not handled.`
         }
