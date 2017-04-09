@@ -32,7 +32,13 @@
     {% include new_relic_browser_snippet %}
 {% endif %}
 
-</head>
+    <script type="text/javascript">
+        setTimeout(function() {
+            window.location.href = "/logout?force=true&airport_ui=false";
+        }, 3300000);
+    </script>
+
+    </head>
 <body class="splash-screen">
 
     <div class="splash-image">
