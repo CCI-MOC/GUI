@@ -63,12 +63,12 @@ export default React.createClass({
         });
         this.renderAuthenticatedApplication();
     },
-    attemptOpenstackLogin: function(username, password, provider, onLoginError) {
+    attemptOpenstackLogin: function(username, password, projectName, provider, onLoginError) {
         actions.LoginActions.attemptOpenstackLogin(
-            username, password, provider,
+            username, password, projectName, provider,
             this.onOpenstackLogin, onLoginError);
     },
-    onOpenstackLogin: function(username, token, provider) {
+    onOpenstackLogin: function(username, token, project_name, provider) {
         //1. set window.access_token
         window.access_token = token;
         setCookie("auth_token", token);
@@ -87,7 +87,7 @@ export default React.createClass({
         if(provider != null) {
             provider_uuid = provider.get('uuid')
         }
-        var data = {username, token, provider: provider_uuid};
+        var data = {username, token, project_name, provider: provider_uuid};
         this.postTokenUpdate(data)
     },
     postTokenUpdate: function(data) {
