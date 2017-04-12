@@ -3,8 +3,8 @@ import jstz from "jstz";
 
 let timezone = jstz.determine();
 let tz_region = timezone ? timezone.name() : "America/Phoenix";
-let shell_proxy = "https://atmo-proxy.cyverse.org/";
-let default_footer_link = "http://www.cyverse.org/";
+let shell_proxy = "https://giji.massopencloud.org";
+let default_footer_link = "https://giji.massopencloud.org";
 
 let USER_PORTAL = {
     link() {
@@ -23,12 +23,11 @@ export default {
     TROPO_API_ROOT: window.TROPO_API_ROOT || "/tropo-api",
     WEB_SH_URL: window.WEB_SH_URL || shell_proxy,
     THEME_URL: window.THEME_URL || "",
-    STATUS_PAGE_LINK: window.STATUS_PAGE_LINK || "",
-    SITE_TITLE: window.SITE_TITLE || "Atmosphere",
-    SITE_FOOTER: window.SITE_FOOTER || "CyVerse",
+    SITE_TITLE: window.SITE_TITLE || "MOC-GIJI",
+    SITE_FOOTER: window.SITE_FOOTER || "MOC",
     SITE_FOOTER_LINK: window.SITE_FOOTER_LINK || default_footer_link,
     UI_VERSION: window.UI_VERSION || "Unknown Unicolored-Jay",
-    SUPPORT_EMAIL: window.SUPPORT_EMAIL || "support@iplantcollaborative.org",
+    SUPPORT_EMAIL: window.SUPPORT_EMAIL || "moc-kaizen-l@bu.edu",
     TZ_REGION: tz_region,
     BADGE_HOST: window.BADGE_HOST,
     BADGES_ENABLED: window.BADGES_ENABLED || false,

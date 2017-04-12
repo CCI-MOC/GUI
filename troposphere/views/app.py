@@ -151,10 +151,6 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
         settings.WEB_DESKTOP_INCLUDE_LINK
 
     if metadata:
-        template_params['DISPLAY_STATUS_PAGE'] = \
-            metadata.display_status_page_link
-        template_params['STATUS_PAGE_LINK'] = \
-            metadata.status_page_link
         template_params['SITE_FOOTER_LINK'] = \
             metadata.site_footer_link
         template_params['USER_PORTAL'] = \

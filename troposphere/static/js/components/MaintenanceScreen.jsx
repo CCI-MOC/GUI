@@ -7,23 +7,11 @@ export default React.createClass({
     displayName: "MaintenanceScreen",
 
     render: function() {
-        var statusPageEl,
             imageParentStyle = {
                 "display": "block",
                 "margin": "auto",
                 "padding-top": "50px"
             };
-
-        if (globals.STATUS_PAGE_LINK) {
-            // if the hyperlink is part of global metdata,
-            // then build out the markup element for including it
-            statusPageEl = (
-                <p>
-                    {"You can view more information about the current maintenance on the "}
-                    <a href={globals.STATUS_PAGE_LINK} target="_blank">status page</a>
-                </p>
-            );
-        }
 
         return (
         <div>
@@ -35,7 +23,6 @@ export default React.createClass({
             <h4 className="t-title">
                 Atmosphere is currently under maintenance.
             </h4>
-            {statusPageEl}
         </div>
         );
     }
