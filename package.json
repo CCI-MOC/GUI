@@ -21,7 +21,7 @@
     "build": "webpack --progress --profile --colors --bail --",
     "watch": "webpack --progress --profile --colors --bail --watch -d --",
     "jenkins": "webpack --profile --colors --",
-    "test": "jest",
+    "test": "jest --config jest-config.json",
     "stats": "webpack --profile --json > stats.json",
     "lint": "eslint troposphere/static/js",
     "travis-lint": "eslint -c .eslintrc.travis --no-eslintrc troposphere/static/js",
