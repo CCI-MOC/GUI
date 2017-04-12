@@ -173,8 +173,6 @@
     {% else %}
     {% render_bundle 'app' 'js' %}
     {% endif %}
-    <!-- Google Analytics -->
-    {% render_bundle 'analytics' 'js' %}
 {% else %}
     <script src="{{ BASE_URL }}/assets/bundles/manifest.js"></script>
     <script src="{{ BASE_URL }}/assets/bundles/vendor.js"></script>
@@ -183,8 +181,6 @@
     {% else %}
     <script src="{{ BASE_URL }}/assets/bundles/app.js"></script>
     {% endif %}
-    <!-- Google Analtics -->
-    <script src="{{ BASE_URL }}/assets/bundles/analytics.js"></script>
 {% endif %}
 </body>
 </html>
