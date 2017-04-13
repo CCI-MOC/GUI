@@ -60,11 +60,6 @@ export default React.createClass({
         return /^(ssh-dss|ecdsa-sha2-nistp256|ssh-ed25519|ssh-rsa)$/.test(firstWord);
     },
 
-    validateKey: function() {
-        let parts = this.state.pubKey.split(/\s+/g);
-        return this.validateKeyType(parts[0])
-    },
-
     isSubmittable: function () {
         if (!this.validateName().hasError && !this.validatePublicKey().hasError) {
             return true;
