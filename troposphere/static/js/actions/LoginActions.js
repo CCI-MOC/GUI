@@ -70,7 +70,8 @@ export default {
         data["username"] = username;
         data["password"] = password;
         data["project_name"] = projectName;
-        data["auth_url"] = provider != null ? provider.get('auth_url') : '';
+        // data["auth_url"] = provider != null ? provider.get('auth_url') : '';
+        data["auth_url"] = "https://engage1.massopencloud.org:5000/v3";
         let authUrl = globals.API_V2_ROOT.replace("/api/v2","/auth");
         let self = this;
         $.ajax(authUrl, {
