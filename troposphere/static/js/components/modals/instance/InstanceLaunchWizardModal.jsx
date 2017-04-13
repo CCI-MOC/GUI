@@ -57,13 +57,14 @@ export default React.createClass({
         // Check if the user has any projects, if not then set view to "PROJECT_VIEW"
         // to create a new one
         let projectList = stores.ProjectStore.getAll();
-        if (projectList) {
-            if (view != "IMAGE_VIEW" && projectList.length === 0) {
-                view = "PROJECT_VIEW";
+
+        let sshKey = stores.SSHKeyStore.getAll();
+        if (sshKey) {
+            if (view != "IMAGE_VIEW" && sshKey.length === 0) {
+                view = "SSH_VIEW";
             }
         }
 
-        let sshKey = stores.SSHKeyStore.getAll();
 
         return {
             // State for general operation (switching views, etc)
@@ -98,9 +99,10 @@ export default React.createClass({
         // Check if the user has any projects, if not then set view to "PROJECT_VIEW"
         // to create a new one
         let projectList = stores.ProjectStore.getAll();
-        if (projectList) {
-            if (view != "IMAGE_VIEW" && projectList.length === 0) {
-                this.viewProject();
+        let sshKey = stores.SSHKeyStore.getAll();
+        if (sshKey) {
+            if (view != "IMAGE_VIEW" && sshKey.length === 0) {
+                this.viewSSH();
             }
         }
 
