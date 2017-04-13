@@ -84,7 +84,7 @@ class TroposphereUser(AbstractBaseUser, PermissionsMixin):
         """
         Call validation plugin to determine user validity
         """
-        #FIXME: Improvement for later: Use the atmosphere code as a guide for is_valid
+        # FIXME: Improvement for later: Use the atmosphere code as a guide for is_valid
         return True
 
     @property

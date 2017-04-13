@@ -46,9 +46,9 @@ def should_route_to_maintenace(request, in_maintenance):
     Indicate if a response should be handled by the maintenance view.
     """
     return (in_maintenance
-        and request.user.is_staff is not True
-        and request.user.username not in MAINTENANCE_EXEMPT_USERNAMES
-        and not is_emulated_session(request))
+            and request.user.is_staff is not True
+            and request.user.username not in MAINTENANCE_EXEMPT_USERNAMES
+            and not is_emulated_session(request))
 
 
 def _should_enabled_new_relic():
@@ -73,15 +73,6 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
             and 'auth_token' in request.COOKIES:
         request.session['access_token'] = request.COOKIES['auth_token']
 
-    #NOTE: Now that we've moved this section from .js to Django, sentry configuration _could_ become more dynamic:
-    if settings.DEBUG:
-        sentry_dict = None
-    else:
-        sentry_dict = {
-            "dsn": "https://27643f06676048be96ad6df686c17da3@app.getsentry.com/73366",
-            "release":"0ec17fad757f44cbdda8ceace19139fd",
-        }
-
     auth_backends = settings.AUTHENTICATION_BACKENDS
     oauth_backends = [
         'django_cyverse_auth.authBackends.OAuthLoginBackend',
@@ -98,10 +89,10 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
     for backend in auth_backends:
         login_auth_type = None
         auth_provider = None
-        if backend in password_backends:
-            login_auth_type = "password-login"
-            auth_provider = "Atmosphere"
-        elif backend in openstack_backends:
+        # if backend in password_backends:
+        #    login_auth_type = "password-login"
+        #    auth_provider = "Atmosphere"
+        if backend in openstack_backends:
             login_auth_type = "openstack-login"
             auth_provider = "Openstack"
         elif backend == oauth_backends[0]:
@@ -122,7 +113,6 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
         'emulator': request.session.get('emulator'),
         'records': maintenance_records,
         'notice': notice,
-        'sentry': sentry_dict,
         'new_relic_enabled': enable_new_relic,
         'show_public_site': public
     }
@@ -134,14 +124,6 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
         template_params['disable_login'] = False
         template_params['SHOW_INSTANCE_METRICS'] = \
             getattr(settings, "SHOW_INSTANCE_METRICS", False)
-        # Only include Intercom information when rendering the authenticated
-        # version of the site.
-        if hasattr(settings, "INTERCOM_APP_ID"):
-            template_params['intercom_app_id'] = settings.INTERCOM_APP_ID
-            template_params['intercom_company_id'] = \
-                settings.INTERCOM_COMPANY_ID
-            template_params['intercom_company_name'] = \
-                settings.INTERCOM_COMPANY_NAME
 
     if enable_new_relic:
         template_params['new_relic_browser_snippet'] = \
@@ -154,7 +136,7 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
     template_params['BADGE_HOST'] = getattr(settings, "BADGE_HOST", None)
     template_params['USE_MOCK_DATA'] = getattr(settings, "USE_MOCK_DATA", False)
     template_params['USE_ALLOCATION_SOURCES'] = getattr(settings,
-            "USE_ALLOCATION_SOURCES", False)
+                                                        "USE_ALLOCATION_SOURCES", False)
     template_params['THEME_URL'] = "/assets/theme"
     template_params['ORG_NAME'] = settings.ORG_NAME
     template_params['DYNAMIC_ASSET_LOADING'] = settings.DYNAMIC_ASSET_LOADING
@@ -215,13 +197,13 @@ def _handle_public_application_request(request, maintenance_records, disabled_lo
 
 
 def _handle_authenticated_application_request(request, maintenance_records,
-        notice_info):
+                                              notice_info):
     """
     Deals with request verified identities via `django_cyverse_auth` module.
     """
     if notice_info and notice_info[1]:
         notice_info = (notice_info[0], notice_info[1],
-            'maintenance_notice' in request.COOKIES)
+                       'maintenance_notice' in request.COOKIES)
 
     template_params = _populate_template_params(request, maintenance_records,
                                                 notice_info,
@@ -254,7 +236,7 @@ def _handle_authenticated_application_request(request, maintenance_records,
 
     if 'maintenance_notice' not in request.COOKIES:
         response.set_cookie('maintenance_notice', 'true',
-            expires=(timezone.now() + timedelta(hours=3)))
+                            expires=(timezone.now() + timedelta(hours=3)))
 
     return response
 
@@ -279,7 +261,6 @@ def application_backdoor(request):
     return redirect('/login?%s' % (urlencode(query_arguments),))
 
 
-
 def application(request):
     maintenance_records, disabled_login, in_maintenance = \
         get_maintenance(request)
@@ -287,20 +268,20 @@ def application(request):
 
     if should_route_to_maintenace(request, in_maintenance):
         logger.warn('%s has actice session but is NOT in staff_list_usernames'
-            % request.user.username)
+                    % request.user.username)
         logger.warn('- routing user')
         return redirect('maintenance')
     if getattr(settings, "DISABLE_PUBLIC_AUTH", False):
         return _handle_authenticated_application_request(request,
-            maintenance_records,
-            notice_info)
+                                                         maintenance_records,
+                                                         notice_info)
     elif request.user.is_authenticated() and has_valid_token(request.user):
         return _handle_authenticated_application_request(request,
-            maintenance_records,
-            notice_info)
+                                                         maintenance_records,
+                                                         notice_info)
     else:
         return _handle_public_application_request(request, maintenance_records,
-            disabled_login=disabled_login)
+                                                  disabled_login=disabled_login)
 
 
 def forbidden(request):

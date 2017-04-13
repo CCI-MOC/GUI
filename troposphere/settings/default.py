@@ -14,7 +14,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 BASE_URL = ""
 
-SERVER_URL="https://localhost"
+SERVER_URL = "https://localhost"
 
 DEBUG = False
 
@@ -32,7 +32,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'rest_framework',
     'rest_framework.authtoken',
-    'webpack_loader', # resolved JS asset + hash for template rendering
+    'webpack_loader',  # resolved JS asset + hash for template rendering
     'django_cyverse_auth',
     'api',
     'troposphere',
@@ -142,7 +142,7 @@ LOGGING = {
     },
 }
 
-API_ROOT    = SERVER_URL + "/api/v1"
+API_ROOT = SERVER_URL + "/api/v1"
 API_V2_ROOT = SERVER_URL + "/api/v2"
 
 # The endpoint in troposphere for generated assets
@@ -181,7 +181,7 @@ AUTHENTICATION_BACKENDS = (
     'django_cyverse_auth.authBackends.OAuthLoginBackend'
 )
 
-# This Method will generate SECRET_KEY and write it to file..
+
 def generate_secret_key(secret_key_path):
     """
     Generates a unique `SECRET_KEY` upon each service start
@@ -200,6 +200,7 @@ def generate_secret_key(secret_key_path):
     with open(secret_key_path, "w") as key_file:
         key_file.write(comment_block)
         key_file.write("SECRET_KEY=\"%s\"\n" % secret_value)
+
 
 # This import will Use an existing SECRET_KEY, or Generate your SECRET_KEY
 # if it doesn't exist yet.

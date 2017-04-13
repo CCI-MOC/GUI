@@ -42,9 +42,9 @@ export default React.createClass({
                     <li>
                         <a id="res-create-instance" href="#" onClick={this.onCreateInstance}><i className={'glyphicon glyphicon-tasks'} /> Instance</a>
                     </li>
-                    <li>
+                    {/*<li>
                         <a id="res-create-volume" href="#" onClick={this.onCreateVolume}><i className={'glyphicon glyphicon-hdd'} /> Volume</a>
-                    </li>
+                    </li>*/}
                     <li>
                         <a id="res-create-link" href="#" onClick={this.onCreateExternalLink}><i className={'glyphicon glyphicon-globe'} /> Link</a>
                     </li>

@@ -9,7 +9,6 @@ import AllocationSourcePlot from "./plots/AllocationSourcePlot";
 import ProviderAllocationPlot from "./plots/ProviderAllocationPlot";
 import ProviderSummaryLinePlot from "./plots/ProviderSummaryLinePlot";
 import CallToAction from "./CallToAction";
-import { trackAction } from "../../utilities/userActivity";
 
 // images
 let launch_instance = globals.THEME_URL + "/images/icon_launchnewinstance.png",
@@ -22,9 +21,6 @@ export default React.createClass({
     renderRequestMoreResources: function(e) {
         e.preventDefault();
         modals.HelpModals.requestMoreResources();
-        trackAction("made-resource-request", {
-            element: "from-dashboard"
-        });
     },
 
     getState: function() {

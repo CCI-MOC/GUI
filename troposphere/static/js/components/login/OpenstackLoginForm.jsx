@@ -2,6 +2,7 @@ import React from "react";
 import Utils from "actions/Utils";
 import stores from "stores";
 import SelectMenu from "components/common/ui/SelectMenu";
+import LoginForm from "./LoginForm";
 
 export default React.createClass({
     displayName: "OpenstackLoginForm",
@@ -100,12 +101,11 @@ export default React.createClass({
     isSubmittable: function() {
         var hasUsername = !!this.state.username && this.state.username.length > 0;
         var hasPassword = !!this.state.password && this.state.password.length > 0;
-        var hasProjectName = !!this.state.projectName && this.state.projectName.length > 0;
         var canLogin = this.state.allowLogin == true;
         if(this.state.showNewProvider) {
             hasProjectName = true;
         }
-        return hasUsername && hasPassword && hasProjectName && canLogin;
+        return hasUsername && hasPassword && canLogin;
     },
     onProviderChange: function(provider) {
         this.setState({provider:provider});
@@ -131,66 +131,18 @@ export default React.createClass({
             projectNameClasses = groupClasses,
             errorMessage = this.state.error_message != null ? "Login Failed: "+ this.state.error_message : null;
         let { provider, providerList} = this.state;
+        var renderLoginOrLoadingFunc = this.renderLoginOrLoading();
 
-        //FIXME: Shamefully using modal-footer : Get css-help later
         return (
-            <form>
-                <div className={usernameClasses}>
-                    <label htmlFor="username">
-                        Username
-                    </label>
-                    <input required
-                        type="name"
-                        className="form-control"
-                        id="username"
-                        value={this.state.username}
-                        onChange={this.onUsernameChange}
-                        onKeyPress={this.onEnterPressed}
-                        />
-                </div>
-                <div className={passwordClasses}>
-                    <label htmlFor="password">
-                        Password
-                    </label>
-                    <input required
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        value={this.state.password}
-                        onChange={this.onPasswordChange}
-                        onKeyPress={this.onEnterPressed}
-                        />
-                </div>
-                <div className={projectNameClasses}>
-                    <label htmlFor="projectName">
-                        projectName
-                    </label>
-                    <input required
-                        type="text"
-                        className="form-control"
-                        id="projectName"
-                        value={this.state.projectName}
-                        onChange={this.onProjectNameChange}
-                        onKeyPress={this.onEnterPressed}
-                        />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="provider">
-                        Provider
-                    </label>
-                    <SelectMenu id="provider"
-                                current={ provider }
-                                optionName={ p => p.get("name") }
-                                list={ providerList }
-                                onSelect={ this.onProviderChange } />
-                </div>
-                <div className="login-screen-footer modal-footer">
-                    <span className="help-block">{errorMessage}</span>
-                    {this.renderLoginOrLoading()}
-                </div>
-            </form>
+            <LoginForm {...{username: this.state.username,
+                            password: this.state.password,
+                            usernameClasses,
+                            passwordClasses,
+                            errorMessage,
+                            renderLoginOrLoadingFunc,
+                            onUsernameChange: this.onUsernameChange,
+                            onPasswordChange: this.onPasswordChange,
+                            onEnterPressed: this.onEnterPressed}} />
         );
     }
-
 });
-

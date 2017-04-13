@@ -3,5 +3,9 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "./.eslintrc.travis"
-    ]
+    ],
+
+    "rules": {
+         "no-console":0
+    }
 }
