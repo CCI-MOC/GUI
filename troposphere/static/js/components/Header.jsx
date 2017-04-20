@@ -16,7 +16,7 @@ let Link = Router.Link;
 
 const links = [
     {
-        name: "Dashboard",
+        name: "Marketplace",
         linksTo: "dashboard",
         href: "/application/dashboard",
         icon: "stats",
@@ -51,11 +51,11 @@ const links = [
         }]
 ).concat([
     {
-        name: "Help",
-        linksTo: "help",
-        href: "/application/help",
-        icon: "question-sign",
-        requiresLogin: false
+        name: "Cloud Dataverse",
+        linksTo: "dataverse",
+        href: "/application/dataverse",
+        icon: "sunglasses",
+        requiresLogin: true
     },
     {
         name: "Admin",

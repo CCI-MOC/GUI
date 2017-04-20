@@ -20,6 +20,11 @@ import ProvidersMaster from "./components/providers/ProvidersMaster";
 import ProviderListSection from "./components/providers/ProviderListSection";
 import ProviderDetail from "./components/providers/ProviderDetail";
 import HelpPage from "./components/help/HelpPage";
+import DataversePage from "./components/dataverse/DataversePage";
+import ClusterPage from "./components/dataverse/ClusterPage";
+import DatasetPage from "./components/dataverse/DatasetPage";
+import PluginPage from "./components/dataverse/PluginPage";
+import JobPage from "./components/dataverse/JobPage";
 import ProjectsMaster from "./components/projects/ProjectsMaster";
 import ProjectDetailsMaster from "./components/projects/detail/ProjectDetailsMaster";
 import ProjectDetailsPage from "./components/projects/ProjectDetailsPage";
@@ -73,7 +78,13 @@ const appRoutes = (
     {globals.USE_ALLOCATION_SOURCES
      ? null
      : providersRoute}
-    <Route name="help" handler={HelpPage} />
+    {/*<Route name="help" handler={HelpPage} />*/}
+    <Route name="dataverse" handler={DataversePage}>
+        <DefaultRoute name="clusters" handler={ClusterPage} />
+        <Route name="datasets" handler={DatasetPage} />
+        <Route name="plugins" handler={PluginPage} />
+        <Route name="jobs" handler={JobPage} />
+    </Route>    
     <Route name="settings" handler={SettingsPage} />
     <Route name="admin" handler={AdminMaster}>
         <Route name="atmosphere-user-manager" path="users" handler={AtmosphereUserMaster} />

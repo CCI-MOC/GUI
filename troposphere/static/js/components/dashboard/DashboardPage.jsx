@@ -73,10 +73,10 @@ export default React.createClass({
                                 linksTo="images" />
                         </div>
                         <div className="col-md-4 col-sm-12">
-                            <CallToAction title="Browse Help Resources"
-                                image={help}
-                                description="View a video tutorial, read the how-to guides, or email the Atmosphere support team."
-                                linksTo="help" />
+                            <CallToAction title="Cloud Dataverse"
+                                image={launch_instance}
+                                description="Data Processing with Sahara"
+                                linksTo="dataverse" />
                         </div>
                         <div className="col-md-4 col-sm-12">
                             <CallToAction title="Change Your Settings"
